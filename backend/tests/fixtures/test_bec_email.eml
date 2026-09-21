@@ -1,0 +1,16 @@
+Received: from mail-relay.suspicious-origin.net (mail-relay.suspicious-origin.net [185.220.101.42])
+    by mx.corporate-target.com with ESMTP id 9X82KL91A
+    for <cfo@corporate-target.com>; Wed, 3 Sep 2026 14:22:10 +0530
+From: Dr. Rajesh Sharma <rajesh.sharma@corp-acquisitions-portal.com>
+To: cfo@corporate-target.com
+Reply-To: executive-direct-desk@protonmail.com
+Subject: URGENT: Revised Wire Transfer Instructions for Pending Escrow
+Date: Wed, 3 Sep 2026 14:21:40 +0530
+Message-ID: <escrow-urgent-982101@corp-acquisitions-portal.com>
+Authentication-Results: mx.corporate-target.com;
+    spf=fail (sender IP 185.220.101.42 does not match SPF record);
+    dkim=fail (body hash did not verify);
+    dmarc=fail (p=reject) header.from=corp-acquisitions-portal.com
+
+Please process the revised wire transfer immediately before market close.
+Escrow account details updated in attachment.

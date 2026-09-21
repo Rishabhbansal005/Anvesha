@@ -1,0 +1,43 @@
+{
+  "manifest_version": "1.0.0",
+  "model_scope": "Model 2 (Business Email Compromise - BEC Baseline)",
+  "governance_status": "DATASET_GAP_IDENTIFIED_SYNTHETIC_DEV_ONLY",
+  "created_at": "2026-09-06T16:40:00Z",
+  "target_labels": {
+    "positive_class": "BEC",
+    "negative_class": "NON_BEC"
+  },
+  "dataset_gap_summary": {
+    "status": "PUBLIC_DATASET_GAP_IDENTIFIED",
+    "prohibition_1": "419 advance-fee fraud corpus STRICTLY PROHIBITED from relabeling as BEC",
+    "prohibition_2": "Generic Nazario phishing STRICTLY PROHIBITED from relabeling as BEC based solely on financial keywords",
+    "required_data": "Real enterprise compromised-account logs, vendor payment fraud traces, executive impersonation threads"
+  },
+  "development_synthetic_corpus": {
+    "file": "ml/datasets/bec_development_synthetic.jsonl",
+    "classification": "SYNTHETIC / DEVELOPMENT ONLY",
+    "total_samples": 10,
+    "label_distribution": {
+      "BEC": 6,
+      "NON_BEC": 4
+    },
+    "subtypes": {
+      "EXECUTIVE_IMPERSONATION": 1,
+      "VENDOR_PAYMENT_FRAUD": 1,
+      "INVOICE_REMITTANCE_FRAUD": 1,
+      "URGENT_WIRE_REQUEST": 1,
+      "COMPROMISED_ACCOUNT": 1,
+      "PAYROLL_DIVERSION": 1,
+      "LEGITIMATE_INVOICE": 1,
+      "LEGITIMATE_FINANCE_COMMUNICATION": 1,
+      "NORMAL_CORPORATE_COMMUNICATION": 2
+    },
+    "sha256": "439169f46b1897c9b0e9e421be0e527d2c3df313d4bdfbfb0b306a4a15998f45"
+  },
+  "leakage_and_boundary_controls": {
+    "overlap_with_iwspa_independent_test": 0,
+    "overlap_with_anvesh_challenge_50": 0,
+    "overlap_with_model_1_training": 0,
+    "production_deployment_status": "BLOCKED (Pending authentic enterprise BEC acquisition)"
+  }
+}

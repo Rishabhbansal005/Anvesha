@@ -1,0 +1,34 @@
+From: "John Anderson" <john.anderson@targetcorp-ceo.com>
+To: accounts.payable@targetcorp.com
+Subject: Confidential - Urgent Wire Transfer Required
+Date: Mon, 07 Sep 2026 10:30:00 +0000
+Message-ID: <SIH-DEMO-02-bec@targetcorp-ceo.com>
+Reply-To: john.anderson.ceo@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=fail (domain targetcorp-ceo.com does not designate 198.51.100.77 as permitted sender);
+    dkim=fail header.i=@targetcorp-ceo.com;
+    dmarc=fail (p=reject)
+Received-SPF: fail (domain targetcorp-ceo.com does not designate 198.51.100.77 as permitted sender)
+Received: from bec-relay.external.net (198.51.100.77)
+    by mx.targetcorp.com with ESMTPS;
+    Mon, 07 Sep 2026 10:30:00 +0000
+
+Hi Sarah,
+
+I need you to process an urgent wire transfer today. This is strictly confidential M&A related.
+
+Please transfer $247,000 to the following account:
+Bank: First International Bank
+Account Name: Meridian Holdings LLC
+SWIFT: FIBRUS33XXX
+Routing Number: 021000089
+Account: 4872903-9921
+
+This must be completed within 24 hours. Do not delay and do not discuss with anyone.
+Contact me only via this email for further instructions.
+
+John Anderson
+Chief Executive Officer
+TargetCorp Inc.

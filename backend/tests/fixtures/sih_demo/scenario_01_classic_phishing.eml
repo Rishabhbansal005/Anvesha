@@ -1,0 +1,27 @@
+From: "IT Security Department" <security-alert@paypa1-secure.com>
+To: victim.user@targetcorp.com
+Subject: [URGENT] Your PayPal Account Has Been Suspended - Action Required
+Date: Mon, 07 Sep 2026 09:15:00 +0000
+Message-ID: <SIH-DEMO-01-phishing@paypa1-secure.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=fail (domain paypa1-secure.com does not designate 185.220.101.45 as permitted sender);
+    dkim=fail header.i=@paypa1-secure.com;
+    dmarc=fail (p=reject)
+Received-SPF: fail (domain paypa1-secure.com does not designate 185.220.101.45 as permitted sender)
+Received: from malicious-relay.onion.network (185.220.101.45)
+    by mx.targetcorp.com with ESMTPS id abc123;
+    Mon, 07 Sep 2026 09:15:00 +0000
+
+<html>
+<body>
+Dear Customer,<br><br>
+Your PayPal account has been <strong>suspended temporarily</strong> due to suspicious activity.<br><br>
+To restore access, you must <a href="http://paypa1-secure.com/verify?token=abc123xyz">verify your account</a> within 24 hours.<br><br>
+If you do not <strong>action required</strong> immediately, your account will be permanently closed.<br><br>
+Please <a href="http://paypa1-secure.com/login">click here to confirm</a> your identity and update billing information.<br><br>
+Reset your credentials now to avoid suspension.<br><br>
+PayPal Security Team
+</body>
+</html>

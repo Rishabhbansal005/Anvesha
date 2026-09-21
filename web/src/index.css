@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-canvas: #F4F7FA;
+    --bg-surface: #FFFFFF;
+    --bg-elevated: #EEF2F6;
+    --border-subtle: #D5DDE6;
+    --text-primary: #17212B;
+    --text-secondary: #5F6B78;
+    --brand-accent: #315EAA;
+    --investigation-accent: #6657C7;
+    --verified-color: #167A59;
+    --suspicious-color: #9A6500;
+    --critical-color: #C53D3D;
+  }
+
+  .dark {
+    --bg-canvas: #080C12;
+    --bg-surface: #0F151D;
+    --bg-elevated: #151D27;
+    --border-subtle: #25313E;
+    --text-primary: #E8EDF3;
+    --text-secondary: #8996A6;
+    --brand-accent: #5B8DEF;
+    --investigation-accent: #8B7CF6;
+    --verified-color: #35C98A;
+    --suspicious-color: #F2B84B;
+    --critical-color: #EF6262;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  /* Technical Monospace Values */
+  code, pre, .font-mono {
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  }
+}
+
+/* Restrained Minimalist Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(137, 150, 166, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(137, 150, 166, 0.4);
+}

@@ -1,0 +1,89 @@
+﻿import csv
+import json
+
+# Data provided by user
+raw_csv_text = """Email Text,Email Type
+"Dear Jordan, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+"Dear Casey, thank you for your purchase. Your order will be shipped soon.",Safe Email
+Congratulations! You've won a $3000 gift card. Click here to claim your prize.,Phishing Email
+You have a new secure message from your bank. Click here to read it.,Phishing Email
+Your package delivery is pending. Please provide your personal information to confirm delivery.,Phishing Email
+"Hi Drew, it was great meeting you at the conference. Let's catch up for coffee next week.",Safe Email
+Your package delivery is pending. Please provide your personal information to confirm delivery.,Phishing Email
+"Hi Alex, it was great meeting you at the conference. Let's catch up for coffee next week.",Safe Email
+Alert: Unusual login attempt detected. Verify your account by clicking here.,Phishing Email
+Your subscription is about to expire. Renew now to continue enjoying our services.,Phishing Email
+"Hello Alex, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+Your subscription is about to expire. Renew now to continue enjoying our services.,Phishing Email
+Your package delivery is pending. Please provide your personal information to confirm delivery.,Phishing Email
+"Dear John, we are pleased to inform you about our upcoming webinar. Register now to secure your spot.",Safe Email
+"Dear Sam, thank you for your purchase. Your order will be shipped soon.",Safe Email
+"Hi Morgan, please find the attached report for this month's performance review.",Safe Email
+"Hi Casey, just a reminder about the project deadline next Friday. Let's ensure everything is on track.",Safe Email
+"Hi John, please find the attached report for this month's performance review.",Safe Email
+Please find attached the minutes from our last meeting. Let me know if you have any questions.,Safe Email
+Reminder: Our meeting is scheduled for tomorrow at 10 AM. Please be prepared with your updates.,Safe Email
+Important: Update your email account settings to avoid service interruption.,Phishing Email
+You have a new secure message from your bank. Click here to read it.,Phishing Email
+Please find attached the minutes from our last meeting. Let me know if you have any questions.,Safe Email
+Alert: Unusual login attempt detected. Verify your account by clicking here.,Phishing Email
+"Dear Jane, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+"Hi Jordan, please find the attached report for this month's performance review.",Safe Email
+Welcome to our newsletter! Stay tuned for the latest updates and offers.,Safe Email
+"Dear Jane, we are pleased to inform you about our upcoming webinar. Register now to secure your spot.",Safe Email
+"Hi Taylor, just a reminder about the project deadline next Friday. Let's ensure everything is on track.",Safe Email
+"Dear Alex, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+Your package delivery is pending. Please provide your personal information to confirm delivery.,Phishing Email
+Reminder: Our meeting is scheduled for tomorrow at 4 PM. Please be prepared with your updates.,Safe Email
+Congratulations! You've won a $1500 gift card. Click here to claim your prize.,Phishing Email
+"Hi Taylor, please find the attached report for this month's performance review.",Safe Email
+We noticed some unusual activity in your account. Log in to review recent transactions.,Phishing Email
+"Dear Jordan, thank you for your purchase. Your order will be shipped soon.",Safe Email
+Your payment has been declined. Update your billing information to continue using our service.,Phishing Email
+"Hi Taylor, it was great meeting you at the conference. Let's catch up for coffee next week.",Safe Email
+We noticed some unusual activity in your account. Log in to review recent transactions.,Phishing Email
+"Hi Jane, please find the attached report for this month's performance review.",Safe Email
+"Hello Sam, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+"Dear Chris, thank you for your purchase. Your order will be shipped soon.",Safe Email
+Your invoice is attached. Please review and pay promptly to avoid penalties.,Phishing Email
+Reminder: Our meeting is scheduled for tomorrow at 2 PM. Please be prepared with your updates.,Safe Email
+Important: Update your email account settings to avoid service interruption.,Phishing Email
+"Dear Drew, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+Congratulations! You've won a $500 gift card. Click here to claim your prize.,Phishing Email
+"Dear John, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+"Dear Chris, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+Congratulations! You've won a $2000 gift card. Click here to claim your prize.,Phishing Email
+"Hello Drew, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+Reminder: Our meeting is scheduled for tomorrow at 1 PM. Please be prepared with your updates.,Safe Email
+"Dear Sam, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+"Hello Taylor, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+Congratulations! You've won a $3000 gift card. Click here to claim your prize.,Phishing Email
+"Dear Morgan, we are pleased to inform you about our upcoming webinar. Register now to secure your spot.",Safe Email
+"Dear Chris, we are pleased to inform you about our upcoming webinar. Register now to secure your spot.",Safe Email
+"Hi Chris, please find the attached report for this month's performance review.",Safe Email
+"Hi Jane, it was great meeting you at the conference. Let's catch up for coffee next week.",Safe Email
+"Hi Morgan, it was great meeting you at the conference. Let's catch up for coffee next week.",Safe Email
+"Dear Alex, we are pleased to inform you about our upcoming webinar. Register now to secure your spot.",Safe Email
+"Hello Casey, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+"Hi Sam, please find the attached report for this month's performance review.",Safe Email
+"Dear Taylor, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+"Hello John, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+"Dear Casey, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+"Dear Drew, thank you for your purchase. Your order will be shipped soon.",Safe Email
+"Dear Taylor, thank you for your purchase. Your order will be shipped soon.",Safe Email
+"Dear Morgan, thank you for your purchase. Your order will be shipped soon.",Safe Email
+"Dear Alex, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+"Hello Chris, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+Congratulations! You've won a $1000 gift card. Click here to claim your prize.,Phishing Email
+"Dear Casey, your subscription has been successfully renewed. Thank you for your continued support.",Safe Email
+Reminder: Our meeting is scheduled for tomorrow at 3 PM. Please be prepared with your updates.,Safe Email
+"Hello Jane, here is your weekly update on the project's progress. Please review and provide feedback.",Safe Email
+"Dear Sam, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+"Dear Morgan, your account has been compromised. Click the link to reset your password immediately.",Phishing Email
+"""
+
+out_path = "ml/datasets/user_lures_dataset.csv"
+with open(out_path, "w", encoding="utf-8") as f:
+    f.write(raw_csv_text.strip())
+
+print(f"Saved {out_path} successfully.")

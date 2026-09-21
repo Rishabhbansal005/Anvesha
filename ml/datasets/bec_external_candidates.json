@@ -1,0 +1,62 @@
+{
+  "audit_version": "1.0.0",
+  "audit_date": "2026-09-06T16:48:00Z",
+  "target_model": "Model 2 (Business Email Compromise - BEC Baseline)",
+  "governance_status": "EXTERNAL_DISCOVERY_AUDIT_COMPLETE",
+  "candidates": [
+    {
+      "id": "bec_candidate_dube_bec2",
+      "dataset_name": "BEC-2 Research Dataset",
+      "authors": "Rohit Dube",
+      "publication": "Building a Business Email Compromise Research Dataset with Large Language Models (Journal of Computer Virology and Hacking Techniques, Jan 2025)",
+      "arxiv_doi": "10.48550/arXiv.2407.20235",
+      "repository_url": "https://github.com/r-dube/bec",
+      "sample_count": 279,
+      "bec_samples": 262,
+      "non_bec_samples": 17,
+      "nature": "AUGMENTED / SYNTHETIC-DERIVED",
+      "format": "Subject + Body + Simulated Enterprise Roles",
+      "license": "Open Research Access",
+      "pii_risk": "ZERO",
+      "iwspa_overlap": 0,
+      "challenge_overlap": 0,
+      "governance_tier": "YELLOW",
+      "recommended_use": "Validation / Cross-Source Independent Test Partition"
+    },
+    {
+      "id": "bec_candidate_kaggle_adversarial_bec",
+      "dataset_name": "Adversarial BEC Email Dataset",
+      "authors": "Kaggle Cybersecurity Research Community",
+      "publication": "Adversarial BEC Benchmark (2024/2025)",
+      "repository_url": "https://www.kaggle.com/datasets/adversarial-bec-dataset",
+      "sample_count": 4211,
+      "bec_samples": 4211,
+      "non_bec_samples": 0,
+      "nature": "SYNTHETIC / ADVERSARIAL",
+      "format": "Subject + Body + Sender/Recipient Faker Metadata + Evasion Trick Tag",
+      "license": "CC BY 4.0",
+      "pii_risk": "ZERO",
+      "iwspa_overlap": 0,
+      "challenge_overlap": 0,
+      "governance_tier": "YELLOW",
+      "recommended_use": "Positive Class Training (Clean Partition) + Adversarial Evasion Robustness Benchmark (Poisoned Partition)"
+    },
+    {
+      "id": "bec_candidate_hf_africa_bec",
+      "dataset_name": "Africa Cyber Threat Intelligence BEC Collection",
+      "authors": "electricsheepafrica",
+      "repository_url": "https://huggingface.co/datasets/electricsheepafrica/africa-bec-dataset",
+      "sample_count": 10000,
+      "bec_samples": "CTI_RECORDS",
+      "non_bec_samples": 0,
+      "nature": "MIXED_CTI_RECORDS",
+      "format": "Structured Incident Metadata & Sector Tags (Non-Email Raw Text)",
+      "license": "Open Access / Research",
+      "pii_risk": "LOW",
+      "iwspa_overlap": 0,
+      "challenge_overlap": 0,
+      "governance_tier": "RED",
+      "recommended_use": "Threat Intelligence Reference Only (Unsuitable for NLP Text Vectorization)"
+    }
+  ]
+}

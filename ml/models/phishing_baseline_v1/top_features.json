@@ -1,0 +1,306 @@
+{
+  "top_positive_features_phishing": [
+    {
+      "feature": "__url_token__",
+      "weight": 2.8468,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "your",
+      "weight": 2.1954,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "__url_token__ to",
+      "weight": 1.943,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "at __url_token__",
+      "weight": 1.7435,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "transfer",
+      "weight": 1.7114,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "access",
+      "weight": 1.6301,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "to",
+      "weight": 1.6154,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "payment",
+      "weight": 1.5841,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "invoice",
+      "weight": 1.5841,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "you",
+      "weight": 1.5827,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "document",
+      "weight": 1.5732,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "verification",
+      "weight": 1.4777,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "has",
+      "weight": 1.3928,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "click",
+      "weight": 1.3614,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "of __currency_token__",
+      "weight": 1.3574,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "queued",
+      "weight": 1.3365,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "view",
+      "weight": 1.3263,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "__email_token__",
+      "weight": 1.26,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "__currency_token__",
+      "weight": 1.2493,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "account",
+      "weight": 1.2337,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "direct deposit",
+      "weight": 1.2174,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "deposit",
+      "weight": 1.2174,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "direct",
+      "weight": 1.2174,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "notice",
+      "weight": 1.205,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "shared",
+      "weight": 1.1518,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "been",
+      "weight": 1.1086,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "has been",
+      "weight": 1.1086,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "docusign",
+      "weight": 1.1019,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "at",
+      "weight": 1.0994,
+      "association": "THREAT_PHISHING"
+    },
+    {
+      "feature": "sign",
+      "weight": 1.0801,
+      "association": "THREAT_PHISHING"
+    }
+  ],
+  "top_negative_features_benign": [
+    {
+      "feature": "the",
+      "weight": -2.3498,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "please",
+      "weight": -1.5262,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "be",
+      "weight": -1.3049,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "2001",
+      "weight": -1.2787,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "august",
+      "weight": -1.2787,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "delivery",
+      "weight": -1.2646,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "attached",
+      "weight": -1.2107,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "for the",
+      "weight": -1.1957,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "is the",
+      "weight": -1.141,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "engineering",
+      "weight": -1.1172,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "expansion",
+      "weight": -1.1172,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "review",
+      "weight": -1.0935,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "we",
+      "weight": -1.0868,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "budget",
+      "weight": -1.0779,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "we have",
+      "weight": -1.0769,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "gas",
+      "weight": -1.0311,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "regulatory",
+      "weight": -1.0068,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "ferc",
+      "weight": -1.0068,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "filing",
+      "weight": -1.0068,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "compressor",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "scheduled",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "compressor station",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "outage",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "station",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "maintenance",
+      "weight": -0.9901,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "trading",
+      "weight": -0.9813,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "agreement",
+      "weight": -0.9791,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "capital",
+      "weight": -0.9766,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "will be",
+      "weight": -0.9694,
+      "association": "BENIGN"
+    },
+    {
+      "feature": "capacity",
+      "weight": -0.9433,
+      "association": "BENIGN"
+    }
+  ]
+}

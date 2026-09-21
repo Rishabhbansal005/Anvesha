@@ -1,0 +1,81 @@
+{
+  "provenance_version": "1.1.0",
+  "audit_phase": "Phase 7B (Model 3 Dataset Governance & Provenance Correction)",
+  "audit_timestamp": "2026-09-06T17:16:00Z",
+  "model_3a_status": {
+    "status": "DATASET GAP — TRAINING BLOCKED",
+    "rationale": "Public ground-truth display-name spoofing and executive impersonation datasets are unavailable in open academic repositories. Enron Corporate Corpus is unverified for impersonation ground-truth."
+  },
+  "model_3b_status": {
+    "status": "READY FOR GOVERNED TRAINING",
+    "rationale": "High-quality, peer-reviewed open datasets (Zenodo Spotting the Hook, Zenodo Brand Impersonation, GlyphNet/dnstwist) provide verified ground-truth domain pairs, brand mappings, and DNS/RDAP telemetry."
+  },
+  "candidate_sources": [
+    {
+      "source_id": "zenodo_dns_intel_8364668",
+      "name": "Zenodo DNS Domain Intelligence Dataset (Spotting the Hook)",
+      "doi": "10.5281/zenodo.8364668",
+      "source_url": "https://zenodo.org/records/8364668",
+      "authors": "Faculty of Information Technology, Brno University of Technology",
+      "publication": "Spotting the Hook: Leveraging Domain Data for Advanced Phishing Detection (CNSM 2024) / Data in Brief (2025)",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "sample_count": 436000,
+      "nature": "REAL_WORLD_INFRASTRUCTURE",
+      "fields_available": ["domain_name", "dns_records", "whois_rdap", "tls_certs", "ip_addresses", "geoip", "label"],
+      "model_suitability": "Model 3B (Domain Infrastructure & Lookalike Intelligence)",
+      "governance_tier": "GREEN"
+    },
+    {
+      "source_id": "zenodo_brand_impersonation_8041387",
+      "name": "Zenodo Phishing Website & Brand Impersonation Dataset",
+      "doi": "10.5281/zenodo.8041387",
+      "source_url": "https://zenodo.org/records/8041387",
+      "authors": "I Kadek Agus Ariesta Putra",
+      "publication": "Phishing Website Dataset for Brand Impersonation Analysis (Zenodo 2023)",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "sample_count": 10395,
+      "nature": "REAL_WORLD_TELEMETRY",
+      "fields_available": ["domain_name", "target_brand", "phishing_vs_legitimate_label", "whois", "ssl", "ip"],
+      "model_suitability": "Model 3B (Target Brand Impersonation & Lookalike Mapping; Out-of-Source Independent Benchmark)",
+      "governance_tier": "GREEN"
+    },
+    {
+      "source_id": "glyphnet_dnstwist_corpus",
+      "name": "GlyphNet & dnstwist Homoglyph / Typosquatting Corpus",
+      "source_url": "https://github.com/elceef/dnstwist",
+      "authors": "GlyphNet Research Team / dnstwist Open Source Community",
+      "publication": "GlyphNet: Visual Homoglyph Detection (arXiv:2302.04652)",
+      "license": "MIT License / Open Research Access",
+      "sample_count": 4050000,
+      "nature": "SYNTHETIC_ALGORITHMIC_PERMUTATIONS_AND_REAL_OBSERVED_HOMOGLYPHS",
+      "fields_available": ["original_domain", "permuted_domain", "permutation_type", "punycode", "visual_similarity_score"],
+      "model_suitability": "Model 3B (Algorithmic Lookalike Distance & Homoglyph Collision)",
+      "governance_tier": "GREEN"
+    },
+    {
+      "source_id": "enron_corporate_corpus_unverified_for_3a",
+      "name": "Enron Corporate Email Corpus (Unverified for Executive Identity)",
+      "source_url": "https://www.cs.cmu.edu/~enron/",
+      "authors": "FERC / CMU CALO Project",
+      "license": "Public Domain",
+      "sample_count": 517401,
+      "nature": "UNLABELED_CORPORATE_MESSAGES",
+      "critical_limitation": "Lacks ground-truth display-name spoofing or impersonation attack labels; cannot be relabeled arbitrarily",
+      "model_suitability": "UNVERIFIED FOR MODEL 3A (DATASET GAP)",
+      "governance_tier": "RED"
+    },
+    {
+      "source_id": "meajor_phishing_corpus_108685",
+      "name": "MeAJOR Merged Email Assets Corpus",
+      "doi": "10.5281/zenodo.108685",
+      "source_url": "https://zenodo.org/records/108685",
+      "authors": "GECAD / ISEP, Polytechnic of Porto",
+      "license": "Open Access",
+      "sample_count": 108685,
+      "nature": "ANONYMIZED_NLP_DATASET",
+      "critical_limitation": "Identity strings replaced by [NAME], [EMAIL_ADDRESS], and [URL] tokens",
+      "model_suitability": "REJECTED (Unusable for Model 3 identity/lookalike detection)",
+      "governance_tier": "RED"
+    }
+  ]
+}

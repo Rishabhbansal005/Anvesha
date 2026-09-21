@@ -1,0 +1,472 @@
+{
+  "KDDTest+.arff": {
+    "file_name": "KDDTest+.arff",
+    "total_records": 22544,
+    "total_features": 41,
+    "total_attributes": 42,
+    "nominal_features": [
+      "protocol_type",
+      "service",
+      "flag",
+      "land",
+      "logged_in",
+      "is_host_login",
+      "is_guest_login"
+    ],
+    "numeric_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "wrong_fragment",
+      "urgent",
+      "hot",
+      "num_failed_logins",
+      "num_compromised",
+      "root_shell",
+      "su_attempted",
+      "num_root",
+      "num_file_creations",
+      "num_shells",
+      "num_access_files",
+      "num_outbound_cmds",
+      "count",
+      "srv_count",
+      "serror_rate",
+      "srv_serror_rate",
+      "rerror_rate",
+      "srv_rerror_rate",
+      "same_srv_rate",
+      "diff_srv_rate",
+      "srv_diff_host_rate",
+      "dst_host_count",
+      "dst_host_srv_count",
+      "dst_host_same_srv_rate",
+      "dst_host_diff_srv_rate",
+      "dst_host_same_src_port_rate",
+      "dst_host_srv_diff_host_rate",
+      "dst_host_serror_rate",
+      "dst_host_srv_serror_rate",
+      "dst_host_rerror_rate",
+      "dst_host_srv_rerror_rate"
+    ],
+    "class_distribution": {
+      "anomaly": 12833,
+      "normal": 9711
+    },
+    "class_percentages": {
+      "anomaly": 56.92,
+      "normal": 43.08
+    },
+    "protocol_distribution": {
+      "tcp": 18880,
+      "icmp": 1043,
+      "udp": 2621
+    },
+    "top_services": [
+      [
+        "http",
+        7853
+      ],
+      [
+        "private",
+        4774
+      ],
+      [
+        "telnet",
+        1626
+      ],
+      [
+        "pop_3",
+        1019
+      ],
+      [
+        "smtp",
+        934
+      ],
+      [
+        "domain_u",
+        894
+      ],
+      [
+        "ftp_data",
+        851
+      ],
+      [
+        "other",
+        838
+      ],
+      [
+        "ecr_i",
+        752
+      ],
+      [
+        "ftp",
+        692
+      ]
+    ],
+    "top_flags": [
+      [
+        "SF",
+        14875
+      ],
+      [
+        "REJ",
+        3850
+      ],
+      [
+        "S0",
+        2013
+      ],
+      [
+        "RSTO",
+        773
+      ],
+      [
+        "RSTR",
+        669
+      ]
+    ],
+    "numeric_stats": {
+      "duration": {
+        "mean": 218.8591,
+        "std": 1407.1454,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 57715.0
+      },
+      "src_bytes": {
+        "mean": 10395.4502,
+        "std": 472775.9451,
+        "min": 0.0,
+        "median": 54.0,
+        "max": 62825648.0
+      },
+      "dst_bytes": {
+        "mean": 2056.0188,
+        "std": 21218.827,
+        "min": 0.0,
+        "median": 46.0,
+        "max": 1345927.0
+      },
+      "count": {
+        "mean": 79.0283,
+        "std": 128.5364,
+        "min": 0.0,
+        "median": 8.0,
+        "max": 511.0
+      },
+      "srv_count": {
+        "mean": 31.1244,
+        "std": 89.0606,
+        "min": 0.0,
+        "median": 6.0,
+        "max": 511.0
+      },
+      "serror_rate": {
+        "mean": 0.1029,
+        "std": 0.2954,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 1.0
+      },
+      "same_srv_rate": {
+        "mean": 0.7403,
+        "std": 0.4125,
+        "min": 0.0,
+        "median": 1.0,
+        "max": 1.0
+      },
+      "dst_host_count": {
+        "mean": 193.8694,
+        "std": 94.0336,
+        "min": 0.0,
+        "median": 255.0,
+        "max": 255.0
+      },
+      "dst_host_srv_count": {
+        "mean": 140.7505,
+        "std": 111.7815,
+        "min": 0.0,
+        "median": 168.0,
+        "max": 255.0
+      }
+    },
+    "top_important_features": [
+      {
+        "feature": "src_bytes",
+        "importance": 0.2043
+      },
+      {
+        "feature": "dst_bytes",
+        "importance": 0.1325
+      },
+      {
+        "feature": "dst_host_rerror_rate",
+        "importance": 0.0709
+      },
+      {
+        "feature": "dst_host_diff_srv_rate",
+        "importance": 0.0669
+      },
+      {
+        "feature": "service",
+        "importance": 0.0666
+      },
+      {
+        "feature": "dst_host_same_srv_rate",
+        "importance": 0.0563
+      },
+      {
+        "feature": "dst_host_srv_rerror_rate",
+        "importance": 0.0367
+      },
+      {
+        "feature": "flag",
+        "importance": 0.0359
+      },
+      {
+        "feature": "duration",
+        "importance": 0.0355
+      },
+      {
+        "feature": "logged_in",
+        "importance": 0.0335
+      }
+    ]
+  },
+  "KDDTest-21.arff": {
+    "file_name": "KDDTest-21.arff",
+    "total_records": 11850,
+    "total_features": 41,
+    "total_attributes": 42,
+    "nominal_features": [
+      "protocol_type",
+      "service",
+      "flag",
+      "land",
+      "logged_in",
+      "is_host_login",
+      "is_guest_login"
+    ],
+    "numeric_features": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "wrong_fragment",
+      "urgent",
+      "hot",
+      "num_failed_logins",
+      "num_compromised",
+      "root_shell",
+      "su_attempted",
+      "num_root",
+      "num_file_creations",
+      "num_shells",
+      "num_access_files",
+      "num_outbound_cmds",
+      "count",
+      "srv_count",
+      "serror_rate",
+      "srv_serror_rate",
+      "rerror_rate",
+      "srv_rerror_rate",
+      "same_srv_rate",
+      "diff_srv_rate",
+      "srv_diff_host_rate",
+      "dst_host_count",
+      "dst_host_srv_count",
+      "dst_host_same_srv_rate",
+      "dst_host_diff_srv_rate",
+      "dst_host_same_src_port_rate",
+      "dst_host_srv_diff_host_rate",
+      "dst_host_serror_rate",
+      "dst_host_srv_serror_rate",
+      "dst_host_rerror_rate",
+      "dst_host_srv_rerror_rate"
+    ],
+    "class_distribution": {
+      "anomaly": 9698,
+      "normal": 2152
+    },
+    "class_percentages": {
+      "anomaly": 81.84,
+      "normal": 18.16
+    },
+    "protocol_distribution": {
+      "tcp": 8632,
+      "udp": 2238,
+      "icmp": 980
+    },
+    "top_services": [
+      [
+        "private",
+        1927
+      ],
+      [
+        "telnet",
+        1617
+      ],
+      [
+        "http",
+        1400
+      ],
+      [
+        "pop_3",
+        1007
+      ],
+      [
+        "other",
+        817
+      ],
+      [
+        "ftp_data",
+        718
+      ],
+      [
+        "ecr_i",
+        701
+      ],
+      [
+        "ftp",
+        672
+      ],
+      [
+        "domain_u",
+        550
+      ],
+      [
+        "smtp",
+        424
+      ]
+    ],
+    "top_flags": [
+      [
+        "SF",
+        7278
+      ],
+      [
+        "REJ",
+        1852
+      ],
+      [
+        "S0",
+        1033
+      ],
+      [
+        "RSTR",
+        668
+      ],
+      [
+        "RSTO",
+        658
+      ]
+    ],
+    "numeric_stats": {
+      "duration": {
+        "mean": 415.4398,
+        "std": 1919.3606,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 57715.0
+      },
+      "src_bytes": {
+        "mean": 19456.4413,
+        "std": 651959.0081,
+        "min": 0.0,
+        "median": 28.0,
+        "max": 62825648.0
+      },
+      "dst_bytes": {
+        "mean": 1228.1052,
+        "std": 23895.0236,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 1288652.0
+      },
+      "count": {
+        "mean": 94.1161,
+        "std": 153.4125,
+        "min": 0.0,
+        "median": 3.0,
+        "max": 511.0
+      },
+      "srv_count": {
+        "mean": 48.2695,
+        "std": 119.2089,
+        "min": 0.0,
+        "median": 2.0,
+        "max": 511.0
+      },
+      "serror_rate": {
+        "mean": 0.1138,
+        "std": 0.3059,
+        "min": 0.0,
+        "median": 0.0,
+        "max": 1.0
+      },
+      "same_srv_rate": {
+        "mean": 0.753,
+        "std": 0.399,
+        "min": 0.0,
+        "median": 1.0,
+        "max": 1.0
+      },
+      "dst_host_count": {
+        "mean": 213.9454,
+        "std": 82.2003,
+        "min": 1.0,
+        "median": 255.0,
+        "max": 255.0
+      },
+      "dst_host_srv_count": {
+        "mean": 117.5416,
+        "std": 106.5589,
+        "min": 1.0,
+        "median": 83.0,
+        "max": 255.0
+      }
+    },
+    "top_important_features": [
+      {
+        "feature": "src_bytes",
+        "importance": 0.1427
+      },
+      {
+        "feature": "srv_count",
+        "importance": 0.1228
+      },
+      {
+        "feature": "protocol_type",
+        "importance": 0.1021
+      },
+      {
+        "feature": "dst_bytes",
+        "importance": 0.0946
+      },
+      {
+        "feature": "service",
+        "importance": 0.084
+      },
+      {
+        "feature": "dst_host_same_srv_rate",
+        "importance": 0.0457
+      },
+      {
+        "feature": "dst_host_same_src_port_rate",
+        "importance": 0.0456
+      },
+      {
+        "feature": "dst_host_srv_count",
+        "importance": 0.0399
+      },
+      {
+        "feature": "count",
+        "importance": 0.0381
+      },
+      {
+        "feature": "duration",
+        "importance": 0.0364
+      }
+    ]
+  }
+}

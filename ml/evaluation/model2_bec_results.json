@@ -1,0 +1,112 @@
+{
+  "evaluation_timestamp": "2026-09-06T17:05:00Z",
+  "model_name": "bec_baseline_v1",
+  "model_sha256": "afae6a334272907d7aa380216853d3543f5cd90fb6f8a5b7780eec7bcbb9aee8",
+  "governance_classification": "B. DEVELOPMENT BASELINE (Useful research baseline, held-out staging)",
+  "validation_metrics": {
+    "partition_name": "VALIDATION_IN_SOURCE",
+    "sample_count": 500,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "bec_recall": 1.0,
+    "bec_fnr": 0.0,
+    "non_bec_fpr": 0.0,
+    "confusion_matrix": [
+      [
+        300,
+        0
+      ],
+      [
+        0,
+        200
+      ]
+    ]
+  },
+  "pure_dube_bec2_metrics": {
+    "partition_name": "PURE_DUBE_BEC2_BENCHMARK",
+    "sample_count": 279,
+    "bec_count": 189,
+    "non_bec_count": 90,
+    "accuracy": 0.9355,
+    "precision": 0.913,
+    "recall": 1.0,
+    "f1_score": 0.9545,
+    "roc_auc": 0.99,
+    "bec_recall": 1.0,
+    "bec_fnr": 0.0,
+    "non_bec_fpr": 0.2,
+    "confusion_matrix": [
+      [
+        72,
+        18
+      ],
+      [
+        0,
+        189
+      ]
+    ]
+  },
+  "heldout_enron_benign_metrics": {
+    "partition_name": "HELDOUT_ENRON_SPAMASSASSIN_BENCHMARK",
+    "sample_count": 300,
+    "bec_count": 0,
+    "non_bec_count": 300,
+    "accuracy": 1.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "roc_auc": 1.0,
+    "bec_recall": 0.0,
+    "bec_fnr": 1.0,
+    "non_bec_fpr": 0.0,
+    "confusion_matrix": [
+      [
+        300
+      ]
+    ]
+  },
+  "mixed_independent_benchmark_metrics": {
+    "partition_name": "MIXED_INDEPENDENT_BENCHMARK",
+    "sample_count": 579,
+    "bec_count": 189,
+    "non_bec_count": 390,
+    "accuracy": 0.9689,
+    "precision": 0.913,
+    "recall": 1.0,
+    "f1_score": 0.9545,
+    "roc_auc": 0.9977,
+    "bec_recall": 1.0,
+    "bec_fnr": 0.0,
+    "non_bec_fpr": 0.0462,
+    "confusion_matrix": [
+      [
+        372,
+        18
+      ],
+      [
+        0,
+        189
+      ]
+    ]
+  },
+  "adversarial_test_metrics": {
+    "partition_name": "ADVERSARIAL_EVASION_BENCHMARK",
+    "sample_count": 300,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "bec_recall": 1.0,
+    "bec_fnr": 0.0,
+    "non_bec_fpr": 0.0,
+    "confusion_matrix": [
+      [
+        300
+      ]
+    ]
+  }
+}

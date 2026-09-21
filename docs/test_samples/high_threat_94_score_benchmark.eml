@@ -1,0 +1,33 @@
+From: Satya Nadella <satya.nadella@micros0ft.com>
+To: finance-director@enterprise.local
+Subject: URGENT: Action Required - Executive Acquisition Fund Transfer Authorization
+Date: Wed, 09 Sep 2026 09:30:00 +0000
+Message-ID: <exec-auth-994812@micros0ft.com>
+Received: from mail.gateway-relay.net (104.244.42.1 [104.244.42.1])
+    by mx.enterprise.local with ESMTP id 99182A
+    for <finance-director@enterprise.local>; Wed, 09 Sep 2026 09:30:01 +0000
+Authentication-Results: mx.enterprise.local;
+    spf=fail (sender IP 104.244.42.1 is not permitted by domain micros0ft.com);
+    dkim=fail header.i=@micros0ft.com;
+    dmarc=none
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Finance Director,
+
+I am currently finalizing the urgent acquisition escrow details.
+Please process the confidential wire transfer of ,250,000 immediately to our foreign swift bank account.
+
+Action required within 24 hours to secure contractual closing before market opening.
+
+Beneficiary Bank: European Escrow Clearing AG
+Bank Account: CH93-0000-8819-2019-4810-2
+SWIFT / BIC Code: ESCROWCH22
+
+Confirm receipt of the wire transfer immediately upon authorization.
+
+Regards,
+
+Satya Nadella
+Chief Executive Officer
+Microsoft Corporation

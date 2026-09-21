@@ -1,0 +1,166 @@
+{
+  "top_bec_features": [
+    {
+      "feature": "account",
+      "weight": 2.2267
+    },
+    {
+      "feature": "wire",
+      "weight": 2.1237
+    },
+    {
+      "feature": "invoice",
+      "weight": 2.0217
+    },
+    {
+      "feature": "bank",
+      "weight": 1.5974
+    },
+    {
+      "feature": "payment",
+      "weight": 1.5412
+    },
+    {
+      "feature": "updated",
+      "weight": 1.4672
+    },
+    {
+      "feature": "transfer",
+      "weight": 1.42
+    },
+    {
+      "feature": "revised invoice",
+      "weight": 1.2716
+    },
+    {
+      "feature": "number",
+      "weight": 1.2695
+    },
+    {
+      "feature": "routing",
+      "weight": 1.2568
+    },
+    {
+      "feature": "payroll",
+      "weight": 1.2236
+    },
+    {
+      "feature": "corporate",
+      "weight": 1.1485
+    },
+    {
+      "feature": "wire transfer",
+      "weight": 1.0795
+    },
+    {
+      "feature": "details",
+      "weight": 1.0693
+    },
+    {
+      "feature": "need",
+      "weight": 1.0658
+    },
+    {
+      "feature": "sent",
+      "weight": 1.0499
+    },
+    {
+      "feature": "previous",
+      "weight": 1.0499
+    },
+    {
+      "feature": "request",
+      "weight": 1.0221
+    },
+    {
+      "feature": "immediately",
+      "weight": 1.0027
+    },
+    {
+      "feature": "vendor",
+      "weight": 1.0027
+    }
+  ],
+  "top_non_bec_features": [
+    {
+      "feature": "delivery",
+      "weight": -1.0195
+    },
+    {
+      "feature": "gas",
+      "weight": -0.8942
+    },
+    {
+      "feature": "2001",
+      "weight": -0.8845
+    },
+    {
+      "feature": "august",
+      "weight": -0.8845
+    },
+    {
+      "feature": "budget",
+      "weight": -0.8622
+    },
+    {
+      "feature": "review",
+      "weight": -0.8092
+    },
+    {
+      "feature": "engineering",
+      "weight": -0.8071
+    },
+    {
+      "feature": "expansion",
+      "weight": -0.8071
+    },
+    {
+      "feature": "regulatory",
+      "weight": -0.7757
+    },
+    {
+      "feature": "ferc",
+      "weight": -0.7757
+    },
+    {
+      "feature": "capacity",
+      "weight": -0.7459
+    },
+    {
+      "feature": "desk",
+      "weight": -0.7387
+    },
+    {
+      "feature": "trading",
+      "weight": -0.7387
+    },
+    {
+      "feature": "outage",
+      "weight": -0.7377
+    },
+    {
+      "feature": "station",
+      "weight": -0.7377
+    },
+    {
+      "feature": "compressor station",
+      "weight": -0.7377
+    },
+    {
+      "feature": "scheduled",
+      "weight": -0.7377
+    },
+    {
+      "feature": "compressor",
+      "weight": -0.7377
+    },
+    {
+      "feature": "maintenance",
+      "weight": -0.7377
+    },
+    {
+      "feature": "agreement",
+      "weight": -0.7244
+    }
+  ]
+}

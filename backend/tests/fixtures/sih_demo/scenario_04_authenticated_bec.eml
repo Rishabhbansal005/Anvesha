@@ -1,0 +1,35 @@
+From: "Michael Chen" <michael.chen@targetcorp.com>
+To: finance@targetcorp.com
+Subject: Updated Banking Details for Vendor Payment - Action Required
+Date: Mon, 07 Sep 2026 13:45:00 +0000
+Message-ID: <SIH-DEMO-04-authenticated-bec@targetcorp.com>
+Reply-To: michael.chen.payments@gmail.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=pass (domain targetcorp.com designates 192.0.2.100 as permitted sender);
+    dkim=pass header.i=@targetcorp.com;
+    dmarc=pass (p=quarantine)
+Received-SPF: pass (domain targetcorp.com designates 192.0.2.100 as permitted sender)
+Received: from mail.targetcorp.com (192.0.2.100)
+    by mx.targetcorp.com with ESMTPS id xyz789;
+    Mon, 07 Sep 2026 13:45:00 +0000
+
+Hi Finance Team,
+
+Please update the banking details for our vendor Apex Solutions Ltd. to the following:
+
+Bank: Regional Commerce Bank
+Account Name: Apex Solutions Ltd.
+Account Number: 738-2910-0047
+SWIFT: RCBUS44XXX
+Routing Number: 028000024
+
+Please process the outstanding invoice for $82,000 as an urgent payment.
+
+The previous account has been closed due to a bank restructuring.
+
+Best regards,
+Michael Chen
+Senior Procurement Manager
+TargetCorp Inc.

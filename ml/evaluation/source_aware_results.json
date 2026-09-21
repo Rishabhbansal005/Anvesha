@@ -1,0 +1,230 @@
+{
+  "evaluation_pipeline_version": "1.0.0",
+  "evaluated_at": "2026-09-06T15:20:00Z",
+  "governance_guarantees": {
+    "iwspa_test_accessed": false,
+    "anvesh_challenge_accessed": false,
+    "model_joblib_overwritten": false,
+    "hyperparameters_tuned": false
+  },
+  "experiments": [
+    {
+      "experiment_name": "Experiment A (Train: Enron+Phishing | Eval: SpamAssassin+Phishing)",
+      "train_sample_count": 6909,
+      "eval_sample_count": 1907,
+      "train_sources": {
+        "enron_corporate_corpus": 3409,
+        "mendeley_nazario_phishing_corpus": 3500
+      },
+      "eval_sources": {
+        "spamassassin_public_corpus": 407,
+        "mendeley_nazario_phishing_corpus": 1500
+      },
+      "metrics": {
+        "accuracy": 0.9995,
+        "precision": 0.9993,
+        "recall": 1.0,
+        "f1_score": 0.9997,
+        "roc_auc": 1.0,
+        "confusion_matrix": {
+          "true_positives": 1500,
+          "true_negatives": 406,
+          "false_positives": 1,
+          "false_negatives": 0
+        },
+        "benign_false_positive_rate": 0.0025,
+        "phishing_false_negative_rate": 0.0
+      },
+      "probability_distribution": {
+        "overall_min": 0.2965,
+        "overall_max": 0.9958,
+        "overall_median": 0.9883,
+        "benign_median": 0.4414,
+        "benign_mean": 0.4234,
+        "benign_min": 0.2965,
+        "benign_max": 0.6234,
+        "phishing_median": 0.9889,
+        "phishing_mean": 0.9896,
+        "phishing_min": 0.9849,
+        "phishing_max": 0.9958,
+        "near_boundary_count": 332
+      },
+      "per_source_breakdown": {
+        "mendeley_nazario_phishing_corpus": {
+          "sample_count": 1500,
+          "true_label": "THREAT_PHISHING",
+          "accuracy": 1.0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "proba_min": 0.9849,
+          "proba_max": 0.9958,
+          "proba_median": 0.9889,
+          "proba_mean": 0.9896,
+          "near_boundary_count": 0
+        },
+        "spamassassin_public_corpus": {
+          "sample_count": 407,
+          "true_label": "BENIGN",
+          "accuracy": 0.9975,
+          "false_positives": 1,
+          "false_negatives": 0,
+          "proba_min": 0.2965,
+          "proba_max": 0.6234,
+          "proba_median": 0.4414,
+          "proba_mean": 0.4234,
+          "near_boundary_count": 332
+        }
+      }
+    },
+    {
+      "experiment_name": "Experiment B (Train: SpamAssassin+Phishing | Eval: Enron+Phishing)",
+      "train_sample_count": 3907,
+      "eval_sample_count": 4909,
+      "train_sources": {
+        "spamassassin_public_corpus": 407,
+        "mendeley_nazario_phishing_corpus": 3500
+      },
+      "eval_sources": {
+        "enron_corporate_corpus": 3409,
+        "mendeley_nazario_phishing_corpus": 1500
+      },
+      "metrics": {
+        "accuracy": 0.3056,
+        "precision": 0.3056,
+        "recall": 1.0,
+        "f1_score": 0.4681,
+        "roc_auc": 1.0,
+        "confusion_matrix": {
+          "true_positives": 1500,
+          "true_negatives": 0,
+          "false_positives": 3409,
+          "false_negatives": 0
+        },
+        "benign_false_positive_rate": 1.0,
+        "phishing_false_negative_rate": 0.0
+      },
+      "probability_distribution": {
+        "overall_min": 0.7955,
+        "overall_max": 0.9933,
+        "overall_median": 0.9293,
+        "benign_median": 0.925,
+        "benign_mean": 0.9235,
+        "benign_min": 0.7955,
+        "benign_max": 0.9604,
+        "phishing_median": 0.9904,
+        "phishing_mean": 0.9907,
+        "phishing_min": 0.9877,
+        "phishing_max": 0.9933,
+        "near_boundary_count": 0
+      },
+      "per_source_breakdown": {
+        "enron_corporate_corpus": {
+          "sample_count": 3409,
+          "true_label": "BENIGN",
+          "accuracy": 0.0,
+          "false_positives": 3409,
+          "false_negatives": 0,
+          "proba_min": 0.7955,
+          "proba_max": 0.9604,
+          "proba_median": 0.925,
+          "proba_mean": 0.9235,
+          "near_boundary_count": 0
+        },
+        "mendeley_nazario_phishing_corpus": {
+          "sample_count": 1500,
+          "true_label": "THREAT_PHISHING",
+          "accuracy": 1.0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "proba_min": 0.9877,
+          "proba_max": 0.9933,
+          "proba_median": 0.9904,
+          "proba_mean": 0.9907,
+          "near_boundary_count": 0
+        }
+      }
+    },
+    {
+      "experiment_name": "Experiment C (Train: Mixed Enron+SpamAssassin+Phishing | Eval: Mixed Val)",
+      "train_sample_count": 6170,
+      "eval_sample_count": 2646,
+      "train_sources": {
+        "enron_corporate_corpus": 2386,
+        "spamassassin_public_corpus": 284,
+        "mendeley_nazario_phishing_corpus": 3500
+      },
+      "eval_sources": {
+        "enron_corporate_corpus": 1023,
+        "spamassassin_public_corpus": 123,
+        "mendeley_nazario_phishing_corpus": 1500
+      },
+      "metrics": {
+        "accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "roc_auc": 1.0,
+        "confusion_matrix": {
+          "true_positives": 1500,
+          "true_negatives": 1146,
+          "false_positives": 0,
+          "false_negatives": 0
+        },
+        "benign_false_positive_rate": 0.0,
+        "phishing_false_negative_rate": 0.0
+      },
+      "probability_distribution": {
+        "overall_min": 0.0047,
+        "overall_max": 0.9964,
+        "overall_median": 0.9841,
+        "benign_median": 0.0131,
+        "benign_mean": 0.0154,
+        "benign_min": 0.0047,
+        "benign_max": 0.3196,
+        "phishing_median": 0.9865,
+        "phishing_mean": 0.9885,
+        "phishing_min": 0.9827,
+        "phishing_max": 0.9964,
+        "near_boundary_count": 0
+      },
+      "per_source_breakdown": {
+        "enron_corporate_corpus": {
+          "sample_count": 1023,
+          "true_label": "BENIGN",
+          "accuracy": 1.0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "proba_min": 0.0047,
+          "proba_max": 0.0535,
+          "proba_median": 0.0134,
+          "proba_mean": 0.0146,
+          "near_boundary_count": 0
+        },
+        "mendeley_nazario_phishing_corpus": {
+          "sample_count": 1500,
+          "true_label": "THREAT_PHISHING",
+          "accuracy": 1.0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "proba_min": 0.9827,
+          "proba_max": 0.9964,
+          "proba_median": 0.9865,
+          "proba_mean": 0.9885,
+          "near_boundary_count": 0
+        },
+        "spamassassin_public_corpus": {
+          "sample_count": 123,
+          "true_label": "BENIGN",
+          "accuracy": 1.0,
+          "false_positives": 0,
+          "false_negatives": 0,
+          "proba_min": 0.0111,
+          "proba_max": 0.3196,
+          "proba_median": 0.0111,
+          "proba_mean": 0.0222,
+          "near_boundary_count": 0
+        }
+      }
+    }
+  ]
+}

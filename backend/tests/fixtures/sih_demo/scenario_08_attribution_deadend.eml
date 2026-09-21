@@ -1,0 +1,24 @@
+From: "Unknown Sender" <unknown@203-0-113-99.dynamic.isp.example>
+To: analyst@targetcorp.com
+Subject: Re: Your inquiry
+Date: Mon, 07 Sep 2026 16:00:00 +0000
+Message-ID: <SIH-DEMO-08-attribution-deadend@203-0-113-99.dynamic.isp.example>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=neutral;
+    dkim=neutral;
+    dmarc=fail (p=none)
+Received-SPF: neutral (sender not listed in SPF record)
+Received: from tor-exit-1.anonymous.network (203.0.113.99)
+    by mx.targetcorp.com with ESMTPS;
+    Mon, 07 Sep 2026 16:00:00 +0000
+X-Originating-IP: 203.0.113.99
+
+Hi,
+
+This is in response to your inquiry. Please find the details below.
+
+The information you requested has been processed and will be forwarded shortly.
+
+Regards

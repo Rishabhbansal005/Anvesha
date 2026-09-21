@@ -1,0 +1,14 @@
+{
+  "model_name": "anvesh_phishing_baseline",
+  "model_version": "1.0.0",
+  "training_date": "2026-09-19T17:38:42.625665+00:00",
+  "random_seed": 42,
+  "development_validation_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0
+  },
+  "governance_notice": "This model is an evidence layer and must not be used as an autonomous final threat verdict."
+}

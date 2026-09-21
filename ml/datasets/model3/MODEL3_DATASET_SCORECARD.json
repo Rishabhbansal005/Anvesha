@@ -1,0 +1,128 @@
+{
+  "scorecard_version": "1.1.0",
+  "target_models": ["Model 3A (Identity / Header Impersonation)", "Model 3B (Lookalike Domain / Brand / Typosquatting)"],
+  "evaluation_date": "2026-09-06T17:15:00Z",
+  "scoring_weights": {
+    "relevance_to_impersonation": 25,
+    "provenance": 15,
+    "label_quality": 15,
+    "real_world_data": 15,
+    "feature_richness": 10,
+    "diversity": 10,
+    "license_clarity": 5,
+    "privacy_compliance": 5,
+    "max_score": 100
+  },
+  "model_3a_readiness": {
+    "status": "DATASET GAP — TRAINING BLOCKED",
+    "rationale": "No public open-source dataset contains verified ground-truth display-name spoofing or executive impersonation labels. Enron Corporate Corpus is unverified for impersonation labels."
+  },
+  "model_3b_readiness": {
+    "status": "READY FOR GOVERNED TRAINING",
+    "rationale": "High-quality, peer-reviewed open datasets (Zenodo Spotting the Hook, Zenodo Brand Impersonation, GlyphNet/dnstwist) provide verified ground-truth domain pairs, brand mappings, and DNS/RDAP telemetry."
+  },
+  "candidates": [
+    {
+      "id": "zenodo_domain_intelligence_8364668",
+      "dataset_name": "Zenodo DNS Domain Intelligence Dataset (Spotting the Hook)",
+      "doi": "10.5281/zenodo.8364668",
+      "source_url": "https://zenodo.org/records/8364668",
+      "sample_count": 436000,
+      "license": "CC BY 4.0",
+      "scores_out_of_5": {
+        "relevance_to_impersonation": 5,
+        "provenance": 5,
+        "label_quality": 5,
+        "real_world_data": 5,
+        "feature_richness": 5,
+        "diversity": 5,
+        "license_clarity": 5,
+        "privacy_compliance": 5
+      },
+      "weighted_score": 100.0,
+      "classification": "GREEN",
+      "decision": "APPROVED for Model 3B (Lookalike Domain Scoring & DNS/RDAP Intelligence)"
+    },
+    {
+      "id": "zenodo_brand_impersonation_8041387",
+      "dataset_name": "Zenodo Phishing Website & Brand Impersonation Dataset",
+      "doi": "10.5281/zenodo.8041387",
+      "source_url": "https://zenodo.org/records/8041387",
+      "sample_count": 10395,
+      "license": "CC BY 4.0",
+      "scores_out_of_5": {
+        "relevance_to_impersonation": 5,
+        "provenance": 5,
+        "label_quality": 5,
+        "real_world_data": 5,
+        "feature_richness": 4,
+        "diversity": 4,
+        "license_clarity": 5,
+        "privacy_compliance": 5
+      },
+      "weighted_score": 96.0,
+      "classification": "GREEN",
+      "decision": "APPROVED for Model 3B (Brand Impersonation & Target-to-Phish Mapping; Independent Test Benchmark)"
+    },
+    {
+      "id": "glyphnet_dnstwist_homoglyphs",
+      "dataset_name": "GlyphNet & dnstwist Homoglyph / Typosquatting Corpus",
+      "reference_url": "https://github.com/elceef/dnstwist",
+      "sample_count": 4050000,
+      "license": "MIT License / Open Research Access",
+      "scores_out_of_5": {
+        "relevance_to_impersonation": 5,
+        "provenance": 4,
+        "label_quality": 5,
+        "real_world_data": 3,
+        "feature_richness": 4,
+        "diversity": 5,
+        "license_clarity": 5,
+        "privacy_compliance": 5
+      },
+      "weighted_score": 89.0,
+      "classification": "GREEN",
+      "decision": "APPROVED for Model 3B (Algorithmic Typosquatting & Visual Homoglyph Distance)"
+    },
+    {
+      "id": "enron_corporate_corpus_unverified_for_3a",
+      "dataset_name": "Enron Corporate Email Corpus (Unverified for Executive Identity)",
+      "source_url": "https://www.cs.cmu.edu/~enron/",
+      "sample_count": 517401,
+      "license": "Public Domain",
+      "scores_out_of_5": {
+        "relevance_to_impersonation": 1,
+        "provenance": 5,
+        "label_quality": 1,
+        "real_world_data": 5,
+        "feature_richness": 2,
+        "diversity": 3,
+        "license_clarity": 5,
+        "privacy_compliance": 4
+      },
+      "weighted_score": 45.0,
+      "classification": "RED",
+      "decision": "UNVERIFIED FOR MODEL 3A (Lacks ground-truth display-name spoofing or impersonation attack labels; cannot be relabeled arbitrarily)"
+    },
+    {
+      "id": "meajor_phishing_corpus_108685",
+      "dataset_name": "MeAJOR Merged Email Assets Corpus",
+      "doi": "10.5281/zenodo.108685",
+      "sample_count": 108685,
+      "license": "Open Access",
+      "scores_out_of_5": {
+        "relevance_to_impersonation": 1,
+        "provenance": 5,
+        "label_quality": 4,
+        "real_world_data": 4,
+        "feature_richness": 2,
+        "diversity": 4,
+        "license_clarity": 5,
+        "privacy_compliance": 5
+      },
+      "weighted_score": 66.0,
+      "classification": "RED",
+      "decision": "REJECTED for Model 3 (Identity and sender domain attributes scrubbed by [NAME] and [EMAIL_ADDRESS] tokens)"
+    }
+  ]
+}

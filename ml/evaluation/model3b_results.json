@@ -1,0 +1,399 @@
+{
+  "datasets": {
+    "train": {
+      "path": "C:\\Users\\Rishabh Bansal\\OneDrive\\Desktop\\SIH2026\\ml\\datasets\\model3\\train.jsonl",
+      "sha256": "b45eb9525037f2b19a74c32017efb2a7bdc44e5647df9d5b0d665345e1a7c52c",
+      "count": 466
+    },
+    "val": {
+      "path": "C:\\Users\\Rishabh Bansal\\OneDrive\\Desktop\\SIH2026\\ml\\datasets\\model3\\val.jsonl",
+      "sha256": "d3b993ea7f8c5ec923e10de64e8eb3478f1509bde1bc01731a4c60f1d46f79e3",
+      "count": 112
+    },
+    "independent_test": {
+      "path": "C:\\Users\\Rishabh Bansal\\OneDrive\\Desktop\\SIH2026\\ml\\datasets\\model3\\independent_test.jsonl",
+      "sha256": "ab37992f500a52fe1eba85f7afba253c1fef381c11e85a3f30337dd6e735f7db",
+      "count": 255
+    },
+    "adversarial_test": {
+      "path": "C:\\Users\\Rishabh Bansal\\OneDrive\\Desktop\\SIH2026\\ml\\datasets\\model3\\adversarial_test.jsonl",
+      "sha256": "be9906f977905d4816184e88ab0dd11ba838c504b9a195b38991d8614aefd4b0",
+      "count": 99
+    }
+  },
+  "deterministic_baseline": {
+    "val": {
+      "accuracy": 0.9375,
+      "precision": 1.0,
+      "recall": 0.9167,
+      "f1": 0.9565,
+      "fpr": 0.0,
+      "fnr": 0.0833,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 28,
+        "fp": 0,
+        "fn": 7,
+        "tp": 77
+      }
+    },
+    "independent_test": {
+      "accuracy": 0.9451,
+      "precision": 1.0,
+      "recall": 0.9282,
+      "f1": 0.9628,
+      "fpr": 0.0,
+      "fnr": 0.0718,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 60,
+        "fp": 0,
+        "fn": 14,
+        "tp": 181
+      }
+    },
+    "adversarial_test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "roc_auc": NaN,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 0,
+        "fp": 0,
+        "fn": 0,
+        "tp": 99
+      }
+    }
+  },
+  "logistic_regression": {
+    "val": {
+      "accuracy": 0.9643,
+      "precision": 1.0,
+      "recall": 0.9524,
+      "f1": 0.9756,
+      "fpr": 0.0,
+      "fnr": 0.0476,
+      "roc_auc": 0.994,
+      "pr_auc": 0.9981,
+      "confusion_matrix": {
+        "tn": 28,
+        "fp": 0,
+        "fn": 4,
+        "tp": 80
+      }
+    },
+    "independent_test": {
+      "accuracy": 0.9216,
+      "precision": 1.0,
+      "recall": 0.8974,
+      "f1": 0.9459,
+      "fpr": 0.0,
+      "fnr": 0.1026,
+      "roc_auc": 0.9872,
+      "pr_auc": 0.9962,
+      "confusion_matrix": {
+        "tn": 60,
+        "fp": 0,
+        "fn": 20,
+        "tp": 175
+      }
+    }
+  },
+  "random_forest": {
+    "val": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 28,
+        "fp": 0,
+        "fn": 0,
+        "tp": 84
+      }
+    },
+    "independent_test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 60,
+        "fp": 0,
+        "fn": 0,
+        "tp": 195
+      }
+    },
+    "adversarial_test": {
+      "accuracy": 0.6667,
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "fpr": 0.0,
+      "fnr": 0.3333,
+      "roc_auc": NaN,
+      "pr_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 0,
+        "fp": 0,
+        "fn": 33,
+        "tp": 66
+      }
+    }
+  },
+  "char_tfidf": {
+    "val": {
+      "accuracy": 0.7946,
+      "precision": 0.9296,
+      "recall": 0.7857,
+      "f1": 0.8516,
+      "fpr": 0.1786,
+      "fnr": 0.2143,
+      "roc_auc": 0.9122,
+      "pr_auc": 0.9619,
+      "confusion_matrix": {
+        "tn": 23,
+        "fp": 5,
+        "fn": 18,
+        "tp": 66
+      }
+    },
+    "independent_test": {
+      "accuracy": 0.8353,
+      "precision": 0.9371,
+      "recall": 0.841,
+      "f1": 0.8865,
+      "fpr": 0.1833,
+      "fnr": 0.159,
+      "roc_auc": 0.9164,
+      "pr_auc": 0.9659,
+      "confusion_matrix": {
+        "tn": 49,
+        "fp": 11,
+        "fn": 31,
+        "tp": 164
+      }
+    }
+  },
+  "brand_breakdown": {
+    "Amazon": {
+      "total": 16,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "PayPal": {
+      "total": 16,
+      "tp": 12,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "American Express": {
+      "total": 22,
+      "tp": 18,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Adobe": {
+      "total": 18,
+      "tp": 14,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Salesforce": {
+      "total": 21,
+      "tp": 17,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "LinkedIn": {
+      "total": 17,
+      "tp": 13,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "eBay": {
+      "total": 15,
+      "tp": 11,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Square": {
+      "total": 18,
+      "tp": 14,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Binance": {
+      "total": 19,
+      "tp": 15,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "QuickBooks": {
+      "total": 18,
+      "tp": 14,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "ADP": {
+      "total": 13,
+      "tp": 9,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Zoom": {
+      "total": 12,
+      "tp": 8,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Oracle": {
+      "total": 20,
+      "tp": 16,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "UPS": {
+      "total": 12,
+      "tp": 8,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "Atlassian": {
+      "total": 18,
+      "tp": 14,
+      "fn": 0,
+      "fp": 0,
+      "tn": 4,
+      "recall": 1.0,
+      "precision": 1.0
+    }
+  },
+  "adv_breakdown": {
+    "multi_homoglyph_collision": {
+      "total": 49,
+      "rf_correct": 26,
+      "det_correct": 49
+    },
+    "punycode_idn_evasion": {
+      "total": 50,
+      "rf_correct": 40,
+      "det_correct": 50
+    }
+  },
+  "test_permutation_breakdown": {
+    "legitimate_identical": {
+      "total": 15,
+      "rf_correct": 15,
+      "det_correct": 15
+    },
+    "legitimate_subdomain": {
+      "total": 45,
+      "rf_correct": 45,
+      "det_correct": 45
+    },
+    "character_substitution": {
+      "total": 41,
+      "rf_correct": 41,
+      "det_correct": 41
+    },
+    "homoglyph_unicode": {
+      "total": 41,
+      "rf_correct": 41,
+      "det_correct": 41
+    },
+    "omission": {
+      "total": 11,
+      "rf_correct": 11,
+      "det_correct": 11
+    },
+    "insertion": {
+      "total": 15,
+      "rf_correct": 15,
+      "det_correct": 15
+    },
+    "transposition": {
+      "total": 12,
+      "rf_correct": 12,
+      "det_correct": 12
+    },
+    "hyphenation_keyword": {
+      "total": 15,
+      "rf_correct": 15,
+      "det_correct": 15
+    },
+    "tld_swap": {
+      "total": 45,
+      "rf_correct": 45,
+      "det_correct": 45
+    },
+    "subdomain_lure": {
+      "total": 15,
+      "rf_correct": 15,
+      "det_correct": 1
+    }
+  },
+  "error_analysis": {
+    "num_false_positives": 0,
+    "num_false_negatives": 0,
+    "sample_false_positives": [],
+    "sample_false_negatives": []
+  }
+}

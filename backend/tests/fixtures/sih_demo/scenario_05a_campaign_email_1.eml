@@ -1,0 +1,22 @@
+From: "IT HelpDesk" <helpdesk@corp-it-support.net>
+To: employee1@targetcorp.com
+Subject: [CRITICAL] Mandatory Security Patch - Reset Your Credentials Now
+Date: Mon, 07 Sep 2026 14:00:00 +0000
+Message-ID: <SIH-DEMO-05-campaign-A@corp-it-support.net>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+X-Campaign-Batch: BATCH-A1
+Authentication-Results: mx.targetcorp.com;
+    spf=fail;
+    dkim=fail;
+    dmarc=fail
+Received-SPF: fail (domain corp-it-support.net does not designate 185.220.101.45 as permitted sender)
+Received: from campaign-relay-1.malicious.net (185.220.101.45)
+    by mx.targetcorp.com with ESMTPS;
+    Mon, 07 Sep 2026 14:00:00 +0000
+
+<html><body>
+CRITICAL: Mandatory security patch deployed. You must <a href="http://corp-it-support.net/patch?id=A1">reset your credentials</a> immediately.
+Your account password expires in 24 hours. Action required to avoid lockout.
+Click here to confirm your identity: http://corp-it-support.net/verify?user=employee1
+</body></html>

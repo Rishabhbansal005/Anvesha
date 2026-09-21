@@ -1,0 +1,166 @@
+[
+  {
+    "feature": "service",
+    "importance": 0.1188
+  },
+  {
+    "feature": "src_bytes",
+    "importance": 0.0921
+  },
+  {
+    "feature": "dst_bytes",
+    "importance": 0.0875
+  },
+  {
+    "feature": "dst_host_diff_srv_rate",
+    "importance": 0.0774
+  },
+  {
+    "feature": "logged_in",
+    "importance": 0.0678
+  },
+  {
+    "feature": "flag",
+    "importance": 0.0548
+  },
+  {
+    "feature": "dst_host_srv_count",
+    "importance": 0.0523
+  },
+  {
+    "feature": "dst_host_rerror_rate",
+    "importance": 0.0518
+  },
+  {
+    "feature": "dst_host_same_srv_rate",
+    "importance": 0.0447
+  },
+  {
+    "feature": "protocol_type",
+    "importance": 0.0377
+  },
+  {
+    "feature": "dst_host_srv_rerror_rate",
+    "importance": 0.0375
+  },
+  {
+    "feature": "duration",
+    "importance": 0.0358
+  },
+  {
+    "feature": "dst_host_same_src_port_rate",
+    "importance": 0.0299
+  },
+  {
+    "feature": "rerror_rate",
+    "importance": 0.0223
+  },
+  {
+    "feature": "count",
+    "importance": 0.0222
+  },
+  {
+    "feature": "srv_count",
+    "importance": 0.0222
+  },
+  {
+    "feature": "srv_rerror_rate",
+    "importance": 0.0178
+  },
+  {
+    "feature": "dst_host_srv_diff_host_rate",
+    "importance": 0.0143
+  },
+  {
+    "feature": "same_srv_rate",
+    "importance": 0.014
+  },
+  {
+    "feature": "dst_host_count",
+    "importance": 0.0132
+  },
+  {
+    "feature": "dst_host_srv_serror_rate",
+    "importance": 0.0131
+  },
+  {
+    "feature": "diff_srv_rate",
+    "importance": 0.0123
+  },
+  {
+    "feature": "hot",
+    "importance": 0.0116
+  },
+  {
+    "feature": "srv_diff_host_rate",
+    "importance": 0.0096
+  },
+  {
+    "feature": "is_guest_login",
+    "importance": 0.0091
+  },
+  {
+    "feature": "dst_host_serror_rate",
+    "importance": 0.009
+  },
+  {
+    "feature": "num_compromised",
+    "importance": 0.006
+  },
+  {
+    "feature": "srv_serror_rate",
+    "importance": 0.0054
+  },
+  {
+    "feature": "serror_rate",
+    "importance": 0.005
+  },
+  {
+    "feature": "num_failed_logins",
+    "importance": 0.0024
+  },
+  {
+    "feature": "wrong_fragment",
+    "importance": 0.0006
+  },
+  {
+    "feature": "num_root",
+    "importance": 0.0005
+  },
+  {
+    "feature": "num_file_creations",
+    "importance": 0.0004
+  },
+  {
+    "feature": "root_shell",
+    "importance": 0.0003
+  },
+  {
+    "feature": "num_access_files",
+    "importance": 0.0002
+  },
+  {
+    "feature": "is_host_login",
+    "importance": 0.0002
+  },
+  {
+    "feature": "num_shells",
+    "importance": 0.0002
+  },
+  {
+    "feature": "urgent",
+    "importance": 0.0001
+  },
+  {
+    "feature": "su_attempted",
+    "importance": 0.0
+  },
+  {
+    "feature": "land",
+    "importance": 0.0
+  },
+  {
+    "feature": "num_outbound_cmds",
+    "importance": 0.0
+  }
+]

@@ -1,0 +1,4446 @@
+{
+  "benchmark_name": "ANVESH 50-Scenario Adversarial & Forensic Challenge Benchmark",
+  "evaluated_at": "2026-09-06T10:25:11.322862+00:00",
+  "dataset_metadata": {
+    "file": "ml/datasets/challenge/anvesh_challenge_50.jsonl",
+    "sha256_hash": "a5abe63187a59eb32c730ec2dd0f7d248629fd7a50679baaa296bd224092c68f",
+    "total_scenarios": 50,
+    "threat_bec_count": 30,
+    "benign_count": 20
+  },
+  "model_metadata": {
+    "model_path": "ml/models/phishing_baseline_v1/model.joblib",
+    "model_sha256": "f49c153fb5bb32ccb0b5904ee008f8bbec052f53b4ca6ccfaa5a6a93df0493d7",
+    "model_name": "anvesh_phishing_baseline",
+    "model_version": "1.0.0"
+  },
+  "layer_a_model1_text_results": {
+    "accuracy": 0.8,
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1_score": 0.8571,
+    "confusion_matrix": {
+      "true_positives": 30,
+      "true_negatives": 10,
+      "false_positives": 10,
+      "false_negatives": 0
+    },
+    "phishing_probabilities": {
+      "overall_min": 0.1677,
+      "overall_max": 0.8545,
+      "overall_median": 0.7681,
+      "threat_bec_median": 0.7681,
+      "benign_median": 0.5195
+    }
+  },
+  "layer_b_full_anvesh_forensic_results": {
+    "accuracy": 0.8,
+    "precision": 1.0,
+    "recall": 0.6667,
+    "f1_score": 0.8,
+    "confusion_matrix": {
+      "true_positives": 20,
+      "true_negatives": 20,
+      "false_positives": 0,
+      "false_negatives": 10
+    },
+    "benign_false_positive_rate": 0.0,
+    "threat_false_negative_rate": 0.3333
+  },
+  "bec_indicators_observed": {
+    "Payment / Wire Transfer Request": 10,
+    "Bank / Account Routing Change": 10,
+    "Urgency / Pressure Tactic": 20,
+    "Authenticated Account Anomaly": 10,
+    "Executive / Sender Reply-To Mismatch": 10,
+    "Invoice / Remittance Modification": 10
+  },
+  "governance_verification": {
+    "fitting_calls_made": 0,
+    "model_modified": false,
+    "challenge_modified": false,
+    "actor_identity_invariant_maintained": "Actor Identity: NOT ESTABLISHED"
+  },
+  "scenario_ledger": [
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-01",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-02",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-03",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-04",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-05",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-06",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-07",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-08",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-09",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BEC-AUTH-10",
+      "scenario_type": "AUTHENTICATED_BEC_COMPROMISE",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7774,
+        "benign_probability": 0.2226,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "transfer",
+            "weight": 1.7114,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "of __currency_token__",
+            "weight": 1.3574,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "MICROSOFT_365_OR_AZURE",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 18,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Payment / Wire Transfer Request",
+          "Bank / Account Routing Change",
+          "Urgency / Pressure Tactic",
+          "Authenticated Account Anomaly"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 41,
+        "risk_level": "MEDIUM",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 18,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: immediately, urgent"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "LOW",
+        "origin_reason": "The available headers identify a shared multi-tenant relay (Microsoft 365 Or Azure), but the evidence does not establish the originating human user or endpoint device.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-01",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6083,
+        "benign_probability": 0.3917,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-02",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.593,
+        "benign_probability": 0.407,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-03",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6044,
+        "benign_probability": 0.3956,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-04",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.5919,
+        "benign_probability": 0.4081,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-05",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6051,
+        "benign_probability": 0.3949,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-06",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6008,
+        "benign_probability": 0.3992,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-07",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6079,
+        "benign_probability": 0.3921,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-08",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6075,
+        "benign_probability": 0.3925,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-09",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.608,
+        "benign_probability": 0.392,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-IMPERSONATION-10",
+      "scenario_type": "EXECUTIVE_IMPERSONATION_REPLY_TO_MISMATCH",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.6082,
+        "benign_probability": 0.3918,
+        "confidence_level": "LOW",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "deposit",
+            "weight": 1.2174,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "FAIL",
+        "dkim": "FAIL",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "MISMATCH_DETECTED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 20,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Urgency / Pressure Tactic",
+          "Executive / Sender Reply-To Mismatch"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 73,
+        "risk_level": "HIGH",
+        "category_scores": {
+          "ml_risk": {
+            "score": 18,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 20,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 15,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 20,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: urgent",
+          "SPF authentication failed (FAIL)",
+          "DKIM cryptographic signature verification failed (FAIL)",
+          "Anomalous origin relay hop detected outside corporate SPF range"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "MEDIUM",
+        "origin_reason": "Single observed public relay gateway; insufficient intermediary hops to independently cross-verify origin trajectory.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-01",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-02",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-03",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-04",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-05",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-06",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-07",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-08",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-09",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-VENDOR-FRAUD-10",
+      "scenario_type": "VENDOR_INVOICE_ACCOUNT_DIVERSION",
+      "actual_label": "THREAT_BEC",
+      "is_threat": true,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.7681,
+        "benign_probability": 0.2319,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "to",
+            "weight": 1.6154,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "payment",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "UNKNOWN",
+        "dkim": "UNKNOWN",
+        "dmarc": "UNKNOWN",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 16,
+        "is_bec_suspected": true,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 39,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 23,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 16,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "ML identified financial coercion vector: bank account, beneficiary"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-01",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1813,
+        "benign_probability": 0.8187,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-02",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1686,
+        "benign_probability": 0.8314,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-03",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1769,
+        "benign_probability": 0.8231,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-04",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1677,
+        "benign_probability": 0.8323,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-05",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1846,
+        "benign_probability": 0.8154,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 6,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 6,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-06",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1759,
+        "benign_probability": 0.8241,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-07",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1799,
+        "benign_probability": 0.8201,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-08",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1796,
+        "benign_probability": 0.8204,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-09",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1794,
+        "benign_probability": 0.8206,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-URGENT-10",
+      "scenario_type": "BENIGN_URGENT_BUSINESS",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "BENIGN",
+        "phishing_probability": 0.1794,
+        "benign_probability": 0.8206,
+        "confidence_level": "MEDIUM",
+        "active_features": [
+          {
+            "feature": "the",
+            "weight": -2.3498,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "please",
+            "weight": -1.5262,
+            "association": "BENIGN"
+          },
+          {
+            "feature": "attached",
+            "weight": -1.2107,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": []
+      },
+      "risk_assessment": {
+        "total_score": 5,
+        "risk_level": "INFORMATIONAL",
+        "category_scores": {
+          "ml_risk": {
+            "score": 5,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": [
+          "Psychological urgency triggers observed: action required"
+        ]
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-01",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-02",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-03",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-04",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-05",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-06",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-07",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-08",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-09",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    },
+    {
+      "scenario_id": "CHALLENGE-BENIGN-INVOICE-10",
+      "scenario_type": "BENIGN_LEGITIMATE_INVOICE",
+      "actual_label": "BENIGN",
+      "is_threat": false,
+      "model1_signal": {
+        "predicted_class": "THREAT_PHISHING",
+        "phishing_probability": 0.8545,
+        "benign_probability": 0.1455,
+        "confidence_level": "HIGH",
+        "active_features": [
+          {
+            "feature": "your",
+            "weight": 2.1954,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "invoice",
+            "weight": 1.5841,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "you",
+            "weight": 1.5827,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "has",
+            "weight": 1.3928,
+            "association": "THREAT_PHISHING"
+          },
+          {
+            "feature": "august",
+            "weight": -1.2787,
+            "association": "BENIGN"
+          }
+        ]
+      },
+      "forensic_evidence": {
+        "spf": "PASS",
+        "dkim": "PASS",
+        "dmarc": "PASS",
+        "cloud_provider": "UNKNOWN",
+        "has_malicious_url": false,
+        "reply_to_relationship": "ALIGNED"
+      },
+      "bec_behavioral_assessment": {
+        "behavioral_risk_score": 0,
+        "is_bec_suspected": false,
+        "indicators": [
+          "Invoice / Remittance Modification"
+        ]
+      },
+      "risk_assessment": {
+        "total_score": 26,
+        "risk_level": "LOW",
+        "category_scores": {
+          "ml_risk": {
+            "score": 26,
+            "max": 30
+          },
+          "forensic_auth_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "infrastructure_risk": {
+            "score": 0,
+            "max": 25
+          },
+          "behavior_bec_risk": {
+            "score": 0,
+            "max": 20
+          }
+        },
+        "reasons": []
+      },
+      "attribution_assessment": {
+        "origin_confidence": "UNDETERMINED",
+        "origin_reason": "Only internal or non-routable private addresses were observed in routing headers; no public origin gateway established.",
+        "actor_identity": "NOT ESTABLISHED",
+        "attribution_boundary": "Available email evidence identifies mail transport infrastructure but does not provide sufficient evidence to attribute the activity to a specific individual or physical endpoint. Forensic evidence boundaries terminate at the transport protocol layer."
+      },
+      "evidence_gaps": [],
+      "recommended_next_action": ""
+    }
+  ]
+}

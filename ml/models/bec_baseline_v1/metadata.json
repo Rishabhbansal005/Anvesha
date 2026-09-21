@@ -1,0 +1,41 @@
+{
+  "model_name": "bec_baseline_v1",
+  "version": "1.0.0",
+  "architecture": "TfidfVectorizer(ngram_range=(1,2), sublinear_tf=True, max_features=5000) + LogisticRegression(C=1.0, class_weight='balanced', random_state=42)",
+  "input_fields": [
+    "subject",
+    "body"
+  ],
+  "training_sources": [
+    "Kaggle_Synthetic_BEC_Curated",
+    "Enron_Corporate_Corpus"
+  ],
+  "validation_sources": [
+    "Kaggle_Synthetic_BEC_Curated",
+    "Enron_Corporate_Corpus"
+  ],
+  "independent_test_source": "Rohit_Dube_BEC2_Benchmark",
+  "adversarial_test_source": "Kaggle_Adversarial_Evasion_Benchmark",
+  "sample_counts": {
+    "train": 2400,
+    "validation": 500,
+    "independent_test": 579,
+    "adversarial_test": 300
+  },
+  "hyperparameters": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "sublinear_tf": true,
+    "max_features": 5000,
+    "C": 1.0,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "max_iter": 1000
+  },
+  "decision_threshold": 0.5,
+  "calibration_status": "UNCALIBRATED_RAW_SIGMOID",
+  "model_sha256": "afae6a334272907d7aa380216853d3543f5cd90fb6f8a5b7780eec7bcbb9aee8",
+  "governance_status": "DEVELOPMENT_BASELINE_EVALUATED"
+}

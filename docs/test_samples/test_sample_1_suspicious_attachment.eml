@@ -1,0 +1,32 @@
+From: Billing Services <accounts-payable@invoicing-secure-portal.com>
+To: target-employee@enterprise.local
+Subject: Past Due: Outstanding Commercial Invoice #INV-992011 - Immediate Action Required
+Date: Wed, 09 Sep 2026 09:15:00 +0000
+Message-ID: <invoice-992011@invoicing-secure-portal.com>
+Received: from mail.invoicing-secure-portal.com (198.51.100.45 [198.51.100.45])
+    by mx.enterprise.local with ESMTP id 8812A
+    for <target-employee@enterprise.local>; Wed, 09 Sep 2026 09:15:01 +0000
+Authentication-Results: mx.enterprise.local;
+    spf=fail (sender IP 198.51.100.45 is not permitted by domain invoicing-secure-portal.com);
+    dkim=fail header.i=@invoicing-secure-portal.com;
+    dmarc=fail (p=none)
+Content-Type: multipart/mixed; boundary="----=_Part_99124_1082"
+MIME-Version: 1.0
+
+------=_Part_99124_1082
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Dear Accounts Department,
+
+Please find attached the final billing statement for Invoice #INV-992011. 
+Our records indicate this balance is currently 45 days overdue.
+
+To avoid service suspension and contractual penalties, review the attached invoice breakdown immediately and remit balance via wire transfer today.
+
+Attachment: Invoice_Statement_992011.pdf.iso
+SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+Regards,
+Automated Corporate Billing Team
+------=_Part_99124_1082--

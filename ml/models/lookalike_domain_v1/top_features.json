@@ -1,0 +1,52 @@
+{
+  "feature_importances": [
+    {
+      "feature": "jaro_winkler",
+      "importance": 0.2728
+    },
+    {
+      "feature": "tld_match",
+      "importance": 0.2044
+    },
+    {
+      "feature": "normalized_edit_distance",
+      "importance": 0.1918
+    },
+    {
+      "feature": "levenshtein_distance",
+      "importance": 0.1553
+    },
+    {
+      "feature": "length_diff",
+      "importance": 0.0888
+    },
+    {
+      "feature": "brand_in_subdomain",
+      "importance": 0.0565
+    },
+    {
+      "feature": "hyphen_count_diff",
+      "importance": 0.0211
+    },
+    {
+      "feature": "has_homoglyph",
+      "importance": 0.0054
+    },
+    {
+      "feature": "digit_substitution_count",
+      "importance": 0.0039
+    },
+    {
+      "feature": "is_punycode",
+      "importance": 0.0
+    }
+  ],
+  "explanation_guide": {
+    "normalized_edit_distance": "Fraction of character edits required to transform candidate SLD to trusted SLD. Lower values indicate strong typosquatting.",
+    "jaro_winkler": "Prefix-weighted string similarity. Higher values indicate close visual or phonetic match.",
+    "brand_in_subdomain": "Deceptive inclusion of trusted brand inside candidate subdomain.",
+    "digit_substitution_count": "Leet-speak / visual digit substitutions (0 for o, 1 for l/i, 3 for e).",
+    "has_homoglyph": "Usage of non-ASCII Cyrillic/Greek Unicode homoglyphs.",
+    "is_punycode": "RFC-3492 xn-- internationalized domain label."
+  }
+}

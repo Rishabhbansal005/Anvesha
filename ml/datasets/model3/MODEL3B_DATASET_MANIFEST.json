@@ -1,0 +1,102 @@
+{
+  "manifest_version": "1.0.0",
+  "created_at": "2026-09-06T17:23:00Z",
+  "model_scope": "Model 3B (Lookalike Domain & Brand Impersonation Detection)",
+  "governance_status": "GOVERNED_BRAND_ISOLATED_PARTITIONS_ESTABLISHED",
+  "task_definition": "LOOKALIKE_DOMAIN (1) vs LEGITIMATE_DOMAIN (0)",
+  "brand_statistics": {
+    "total_unique_brands": 50,
+    "train_brands_count": 28,
+    "val_brands_count": 7,
+    "independent_test_brands_count": 15,
+    "independent_brands_list": [
+      "ADP",
+      "Adobe",
+      "Amazon",
+      "American Express",
+      "Atlassian",
+      "Binance",
+      "LinkedIn",
+      "Oracle",
+      "PayPal",
+      "QuickBooks",
+      "Salesforce",
+      "Square",
+      "UPS",
+      "Zoom",
+      "eBay"
+    ],
+    "brand_leakage_between_train_and_test": 0
+  },
+  "engineered_features": [
+    "levenshtein_distance",
+    "normalized_edit_distance",
+    "jaro_winkler",
+    "length_diff",
+    "tld_match",
+    "has_homoglyph",
+    "is_punycode",
+    "digit_substitution_count",
+    "hyphen_count_diff",
+    "brand_in_subdomain"
+  ],
+  "partitions": {
+    "TRAIN": {
+      "file": "ml/datasets/model3/train.jsonl",
+      "sha256": "b45eb9525037f2b19a74c32017efb2a7bdc44e5647df9d5b0d665345e1a7c52c",
+      "total_samples": 466,
+      "label_distribution": {
+        "LEGITIMATE_DOMAIN": 112,
+        "LOOKALIKE_DOMAIN": 354
+      }
+    },
+    "VALIDATION": {
+      "file": "ml/datasets/model3/val.jsonl",
+      "sha256": "d3b993ea7f8c5ec923e10de64e8eb3478f1509bde1bc01731a4c60f1d46f79e3",
+      "total_samples": 112,
+      "label_distribution": {
+        "LEGITIMATE_DOMAIN": 28,
+        "LOOKALIKE_DOMAIN": 84
+      }
+    },
+    "INDEPENDENT_TEST": {
+      "file": "ml/datasets/model3/independent_test.jsonl",
+      "sha256": "ab37992f500a52fe1eba85f7afba253c1fef381c11e85a3f30337dd6e735f7db",
+      "total_samples": 255,
+      "label_distribution": {
+        "LEGITIMATE_DOMAIN": 60,
+        "LOOKALIKE_DOMAIN": 195
+      },
+      "isolation_note": "15 distinct brands completely held out from training and validation"
+    },
+    "ADVERSARIAL_TEST": {
+      "file": "ml/datasets/model3/adversarial_test.jsonl",
+      "sha256": "be9906f977905d4816184e88ab0dd11ba838c504b9a195b38991d8614aefd4b0",
+      "total_samples": 99,
+      "label_distribution": {
+        "LOOKALIKE_DOMAIN": 99
+      },
+      "nature": "ADVERSARIAL_SYNTHETIC"
+    }
+  },
+  "raw_sources": [
+    {
+      "source_name": "Zenodo_Spotting_The_Hook_DNS_Intel",
+      "doi": "10.5281/zenodo.8364668",
+      "license": "CC BY 4.0",
+      "role": "DNS/WHOIS and benign domain structures"
+    },
+    {
+      "source_name": "Zenodo_Phishing_Website_Brand_Impersonation",
+      "doi": "10.5281/zenodo.8041387",
+      "license": "CC BY 4.0",
+      "role": "Brand target mappings and brand lookalike pairs"
+    },
+    {
+      "source_name": "GlyphNet_dnstwist_Permutations",
+      "reference": "arXiv:2302.04652 / GitHub: elceef/dnstwist",
+      "license": "MIT / Open Research",
+      "role": "Permutation logic: homoglyphs, substitutions, bit-squatting, TLD-swaps"
+    }
+  ]
+}

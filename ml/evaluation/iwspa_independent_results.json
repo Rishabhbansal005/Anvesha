@@ -1,0 +1,114 @@
+{
+  "evaluation_name": "IWSPA-AP Independent Benchmark Evaluation",
+  "evaluated_at": "2026-09-06T10:14:08.783986+00:00",
+  "dataset_metadata": {
+    "file": "ml/datasets/processed/independent_test_iwspa.jsonl",
+    "sha256_hash": "a3b984dba0bb11a939e7a1cd5a2d0b1e19845f1d10f7970aa5557b90de233552",
+    "total_samples": 3000,
+    "benign_samples": 1500,
+    "phishing_samples": 1500,
+    "source_distribution": {
+      "iwspa_ap_benchmark": 3000
+    }
+  },
+  "model_metadata": {
+    "model_path": "ml/models/phishing_baseline_v1/model.joblib",
+    "model_sha256": "f49c153fb5bb32ccb0b5904ee008f8bbec052f53b4ca6ccfaa5a6a93df0493d7",
+    "model_name": "anvesh_phishing_baseline",
+    "model_version": "1.0.0"
+  },
+  "overall_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "benign_specificity": 1.0,
+    "phishing_recall": 1.0,
+    "benign_false_positive_rate": 0.0,
+    "phishing_false_negative_rate": 0.0,
+    "confusion_matrix": {
+      "true_positives": 1500,
+      "true_negatives": 1500,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "total_evaluated": 3000
+    }
+  },
+  "probability_distribution": {
+    "overall_min": 0.0453,
+    "overall_max": 0.9732,
+    "overall_median": 0.6801,
+    "overall_mean": 0.5927,
+    "benign_median": 0.1937,
+    "benign_mean": 0.2353,
+    "benign_min": 0.0453,
+    "benign_max": 0.4503,
+    "phishing_median": 0.9524,
+    "phishing_mean": 0.9502,
+    "phishing_min": 0.9098,
+    "phishing_max": 0.9732,
+    "near_boundary_count": 372,
+    "bins": {
+      "0.00-0.10": {
+        "actual_benign": 383,
+        "actual_phishing": 0,
+        "total": 383
+      },
+      "0.10-0.20": {
+        "actual_benign": 395,
+        "actual_phishing": 0,
+        "total": 395
+      },
+      "0.20-0.30": {
+        "actual_benign": 291,
+        "actual_phishing": 0,
+        "total": 291
+      },
+      "0.30-0.40": {
+        "actual_benign": 59,
+        "actual_phishing": 0,
+        "total": 59
+      },
+      "0.40-0.50": {
+        "actual_benign": 372,
+        "actual_phishing": 0,
+        "total": 372
+      },
+      "0.50-0.60": {
+        "actual_benign": 0,
+        "actual_phishing": 0,
+        "total": 0
+      },
+      "0.60-0.70": {
+        "actual_benign": 0,
+        "actual_phishing": 0,
+        "total": 0
+      },
+      "0.70-0.80": {
+        "actual_benign": 0,
+        "actual_phishing": 0,
+        "total": 0
+      },
+      "0.80-0.90": {
+        "actual_benign": 0,
+        "actual_phishing": 0,
+        "total": 0
+      },
+      "0.90-1.00": {
+        "actual_benign": 0,
+        "actual_phishing": 1500,
+        "total": 1500
+      }
+    }
+  },
+  "governance_safeguards": {
+    "evaluation_mode": "FROZEN_MODEL_SINGLE_PASS_INFERENCE",
+    "fitting_calls_made": 0,
+    "hyperparameter_tuning_performed": false,
+    "threshold_tuning_performed": false,
+    "anvesh_challenge_accessed": false,
+    "model_file_integrity_preserved": true,
+    "dataset_file_integrity_preserved": true
+  }
+}

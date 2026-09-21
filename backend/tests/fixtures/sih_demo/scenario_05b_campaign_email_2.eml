@@ -1,0 +1,23 @@
+From: "IT HelpDesk" <helpdesk@corp-it-support.net>
+To: employee2@targetcorp.com
+Subject: [CRITICAL] Your Password Expires Tonight - Update Immediately
+Date: Mon, 07 Sep 2026 14:15:00 +0000
+Message-ID: <SIH-DEMO-05-campaign-B@corp-it-support.net>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+X-Campaign-Batch: BATCH-A2
+Authentication-Results: mx.targetcorp.com;
+    spf=fail;
+    dkim=fail;
+    dmarc=fail
+Received-SPF: fail (domain corp-it-support.net does not designate 185.220.101.45 as permitted sender)
+Received: from campaign-relay-1.malicious.net (185.220.101.45)
+    by mx.targetcorp.com with ESMTPS;
+    Mon, 07 Sep 2026 14:15:00 +0000
+
+<html><body>
+URGENT: Your corporate password expires tonight. Action required immediately.
+<a href="http://corp-it-support.net/reset?user=employee2">Click here to confirm your identity</a>
+You must reset your credentials or your account will be suspended temporarily.
+Security Notice: Unauthorized login attempt detected on your account.
+</body></html>

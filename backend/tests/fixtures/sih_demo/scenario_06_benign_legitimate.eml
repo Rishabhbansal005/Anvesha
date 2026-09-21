@@ -1,0 +1,35 @@
+From: "Emily Watson" <emily.watson@legitimatevendor.com>
+To: procurement@targetcorp.com
+Subject: Q3 2026 Software License Renewal Invoice
+Date: Mon, 07 Sep 2026 09:00:00 +0000
+Message-ID: <SIH-DEMO-06-benign@legitimatevendor.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=pass (domain legitimatevendor.com designates 203.0.113.200 as permitted sender);
+    dkim=pass header.i=@legitimatevendor.com;
+    dmarc=pass (p=quarantine)
+Received-SPF: pass (domain legitimatevendor.com designates 203.0.113.200 as permitted sender)
+Received: from mail.legitimatevendor.com (203.0.113.200)
+    by mx.targetcorp.com with ESMTPS id abc987def;
+    Mon, 07 Sep 2026 09:00:00 +0000
+
+Hi Procurement Team,
+
+Please find attached our Q3 2026 software license renewal invoice for your review.
+
+Invoice Number: INV-2026-09-00847
+Amount Due: $12,400.00
+Due Date: September 30, 2026
+Payment Terms: Net 30
+
+Our standard payment details remain unchanged. Please use the bank account on file.
+
+If you have any questions, please don't hesitate to reach out.
+
+Best regards,
+Emily Watson
+Account Manager
+LegitimateVendor Technologies
+emily.watson@legitimatevendor.com
++1 (555) 234-5678

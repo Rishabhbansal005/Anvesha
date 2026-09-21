@@ -1,0 +1,84 @@
+{
+  "model_name": "lookalike_domain_v1",
+  "model_version": "1.0.0",
+  "model_type": "RandomForestClassifier",
+  "model_sha256": "31224d67d9d97660a5db20f5ac16cc1c24b8b22b86ec290240180f11c09d2559",
+  "framework": "scikit-learn",
+  "framework_version": "1.7.1",
+  "task": "LOOKALIKE_DOMAIN_DETECTION",
+  "decision_threshold": 0.5,
+  "probability_type": "uncalibrated_rf_ensemble_tree_frequency",
+  "hyperparameters": {
+    "n_estimators": 100,
+    "max_depth": 5,
+    "random_state": 42,
+    "class_weight": "balanced"
+  },
+  "feature_names": [
+    "levenshtein_distance",
+    "normalized_edit_distance",
+    "jaro_winkler",
+    "length_diff",
+    "tld_match",
+    "has_homoglyph",
+    "is_punycode",
+    "digit_substitution_count",
+    "hyphen_count_diff",
+    "brand_in_subdomain"
+  ],
+  "dataset_provenance": {
+    "train_sha256": "b45eb9525037f2b19a74c32017efb2a7bdc44e5647df9d5b0d665345e1a7c52c",
+    "val_sha256": "d3b993ea7f8c5ec923e10de64e8eb3478f1509bde1bc01731a4c60f1d46f79e3",
+    "independent_test_sha256": "ab37992f500a52fe1eba85f7afba253c1fef381c11e85a3f30337dd6e735f7db",
+    "adversarial_test_sha256": "be9906f977905d4816184e88ab0dd11ba838c504b9a195b38991d8614aefd4b0"
+  },
+  "validation_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fpr": 0.0,
+    "fnr": 0.0,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 28,
+      "fp": 0,
+      "fn": 0,
+      "tp": 84
+    }
+  },
+  "independent_test_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fpr": 0.0,
+    "fnr": 0.0,
+    "roc_auc": 1.0,
+    "pr_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 60,
+      "fp": 0,
+      "fn": 0,
+      "tp": 195
+    }
+  },
+  "adversarial_test_metrics": {
+    "accuracy": 0.6667,
+    "precision": 1.0,
+    "recall": 0.6667,
+    "f1": 0.8,
+    "fpr": 0.0,
+    "fnr": 0.3333,
+    "roc_auc": NaN,
+    "pr_auc": 1.0,
+    "confusion_matrix": {
+      "tn": 0,
+      "fp": 0,
+      "fn": 33,
+      "tp": 66
+    }
+  },
+  "created_at": "2026-09-06T17:29:00Z"
+}

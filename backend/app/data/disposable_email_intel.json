@@ -1,0 +1,291 @@
+{
+  "dataset_name": "ANVESH Governed Disposable & Temporary Email Intelligence",
+  "dataset_version": "2026.09.1",
+  "source": "Curated Disposable Email Domain Registry (derived from disposable-email-domains / Dustin Fischer CC0-1.0 and RFC-compliant privacy relays)",
+  "license": "CC0-1.0 (Public Domain)",
+  "updated_at": "2026-09-07T00:00:00Z",
+  "domains": {
+    "mailinator.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Mailinator",
+      "confidence": "HIGH",
+      "notes": "Public throwaway inbox provider"
+    },
+    "mailinater.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Mailinator",
+      "confidence": "HIGH",
+      "notes": "Mailinator alternate domain"
+    },
+    "guerrillamail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Guerrilla Mail",
+      "confidence": "HIGH",
+      "notes": "Disposable temporary email service"
+    },
+    "guerrillamailblock.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Guerrilla Mail",
+      "confidence": "HIGH",
+      "notes": "Guerrilla Mail alias domain"
+    },
+    "sharklasers.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Guerrilla Mail",
+      "confidence": "HIGH",
+      "notes": "Guerrilla Mail domain"
+    },
+    "grr.la": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Guerrilla Mail",
+      "confidence": "HIGH",
+      "notes": "Guerrilla Mail short domain"
+    },
+    "tempmail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Temp Mail",
+      "confidence": "HIGH",
+      "notes": "Temporary disposable email service"
+    },
+    "temp-mail.org": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Temp Mail",
+      "confidence": "HIGH",
+      "notes": "Temporary disposable email service"
+    },
+    "10minutemail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "10 Minute Mail",
+      "confidence": "HIGH",
+      "notes": "Time-limited temporary email inbox"
+    },
+    "10minutemail.net": {
+      "classification": "DISPOSABLE",
+      "provider_name": "10 Minute Mail",
+      "confidence": "HIGH",
+      "notes": "Time-limited temporary email inbox"
+    },
+    "trashmail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "TrashMail",
+      "confidence": "HIGH",
+      "notes": "Disposable forwarder/inbox service"
+    },
+    "yopmail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "YOPmail",
+      "confidence": "HIGH",
+      "notes": "Disposable throwaway inbox service"
+    },
+    "yopmail.fr": {
+      "classification": "DISPOSABLE",
+      "provider_name": "YOPmail",
+      "confidence": "HIGH",
+      "notes": "YOPmail French domain"
+    },
+    "dispostable.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Dispostable",
+      "confidence": "HIGH",
+      "notes": "Temporary inbox service"
+    },
+    "getairmail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "AirMail",
+      "confidence": "HIGH",
+      "notes": "Temporary inbox provider"
+    },
+    "throwawaymail.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "ThrowAwayMail",
+      "confidence": "HIGH",
+      "notes": "Ephemeral throwaway email provider"
+    },
+    "fakeinbox.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "FakeInbox",
+      "confidence": "HIGH",
+      "notes": "Fake temporary email generator"
+    },
+    "mytemp.email": {
+      "classification": "DISPOSABLE",
+      "provider_name": "MyTempEmail",
+      "confidence": "HIGH",
+      "notes": "Disposable email inbox provider"
+    },
+    "generator.email": {
+      "classification": "DISPOSABLE",
+      "provider_name": "GeneratorEmail",
+      "confidence": "HIGH",
+      "notes": "Temporary email generator"
+    },
+    "inbound.plus": {
+      "classification": "DISPOSABLE",
+      "provider_name": "InboundPlus",
+      "confidence": "HIGH",
+      "notes": "Disposable catch-all service"
+    },
+    "mohmal.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Mohmal",
+      "confidence": "HIGH",
+      "notes": "Disposable temporary email provider"
+    },
+    "nada.ltd": {
+      "classification": "DISPOSABLE",
+      "provider_name": "GetNada",
+      "confidence": "HIGH",
+      "notes": "Disposable inbox provider"
+    },
+    "getnada.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "GetNada",
+      "confidence": "HIGH",
+      "notes": "Disposable inbox provider"
+    },
+    "abacus.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "GetNada",
+      "confidence": "HIGH",
+      "notes": "GetNada domain"
+    },
+    "crazymailing.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "CrazyMailing",
+      "confidence": "HIGH",
+      "notes": "Quick temporary email service"
+    },
+    "maildrop.cc": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Maildrop",
+      "confidence": "HIGH",
+      "notes": "Spam-filter disposable email provider"
+    },
+    "burnermail.io": {
+      "classification": "DISPOSABLE",
+      "provider_name": "Burner Mail",
+      "confidence": "HIGH",
+      "notes": "Burner/temporary email service"
+    },
+    "emailondeck.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": "EmailOnDeck",
+      "confidence": "HIGH",
+      "notes": "Temporary fast email service"
+    },
+    "example-disposable-domain.com": {
+      "classification": "DISPOSABLE",
+      "provider_name": null,
+      "confidence": "HIGH",
+      "notes": "Standard governed test fixture domain"
+    },
+    "privaterelay.appleid.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Apple Hide My Email / Private Relay",
+      "confidence": "HIGH",
+      "notes": "Legitimate consumer privacy forwarding alias"
+    },
+    "mozmail.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Firefox Relay",
+      "confidence": "HIGH",
+      "notes": "Mozilla Firefox privacy relay alias"
+    },
+    "relay.firefox.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Firefox Relay",
+      "confidence": "HIGH",
+      "notes": "Mozilla Firefox privacy relay alias"
+    },
+    "duck.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "DuckDuckGo Email Protection",
+      "confidence": "HIGH",
+      "notes": "DuckDuckGo privacy forwarding alias service"
+    },
+    "simplelogin.co": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "SimpleLogin (Proton)",
+      "confidence": "HIGH",
+      "notes": "Open-source email alias & privacy forwarding service"
+    },
+    "simplelogin.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "SimpleLogin (Proton)",
+      "confidence": "HIGH",
+      "notes": "SimpleLogin privacy forwarding alias"
+    },
+    "anonaddy.me": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Addy.io / AnonAddy",
+      "confidence": "HIGH",
+      "notes": "Anonymous email forwarding alias service"
+    },
+    "anonaddy.com": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Addy.io / AnonAddy",
+      "confidence": "HIGH",
+      "notes": "Anonymous email forwarding alias service"
+    },
+    "addy.io": {
+      "classification": "FORWARDING_PRIVACY",
+      "provider_name": "Addy.io",
+      "confidence": "HIGH",
+      "notes": "Anonymous email forwarding alias service"
+    },
+    "gmail.com": {
+      "classification": "NORMAL",
+      "provider_name": "Google Workspace / Gmail",
+      "confidence": "HIGH",
+      "notes": "Major commercial enterprise & consumer email provider"
+    },
+    "googlemail.com": {
+      "classification": "NORMAL",
+      "provider_name": "Google Workspace / Gmail",
+      "confidence": "HIGH",
+      "notes": "Google mail regional domain"
+    },
+    "outlook.com": {
+      "classification": "NORMAL",
+      "provider_name": "Microsoft 365 / Outlook",
+      "confidence": "HIGH",
+      "notes": "Major commercial enterprise & consumer email provider"
+    },
+    "hotmail.com": {
+      "classification": "NORMAL",
+      "provider_name": "Microsoft 365 / Outlook",
+      "confidence": "HIGH",
+      "notes": "Microsoft consumer email provider"
+    },
+    "yahoo.com": {
+      "classification": "NORMAL",
+      "provider_name": "Yahoo Mail",
+      "confidence": "HIGH",
+      "notes": "Major commercial consumer email provider"
+    },
+    "proton.me": {
+      "classification": "NORMAL",
+      "provider_name": "Proton Mail",
+      "confidence": "HIGH",
+      "notes": "Encrypted webmail provider"
+    },
+    "protonmail.com": {
+      "classification": "NORMAL",
+      "provider_name": "Proton Mail",
+      "confidence": "HIGH",
+      "notes": "Encrypted webmail provider"
+    },
+    "icloud.com": {
+      "classification": "NORMAL",
+      "provider_name": "Apple iCloud Mail",
+      "confidence": "HIGH",
+      "notes": "Apple consumer email service"
+    },
+    "zoho.com": {
+      "classification": "NORMAL",
+      "provider_name": "Zoho Mail",
+      "confidence": "HIGH",
+      "notes": "Commercial business & consumer email provider"
+    }
+  }
+}

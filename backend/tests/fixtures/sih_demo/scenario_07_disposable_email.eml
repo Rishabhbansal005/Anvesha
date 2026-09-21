@@ -1,0 +1,21 @@
+From: "no-reply" <registration@mailinator.com>
+To: target@company.com
+Subject: Account Registration Confirmation
+Date: Mon, 07 Sep 2026 15:30:00 +0000
+Message-ID: <SIH-DEMO-07-disposable@mailinator.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Authentication-Results: mx.company.com;
+    spf=fail (domain mailinator.com does not designate 198.51.100.55 as permitted sender);
+    dkim=fail;
+    dmarc=fail
+Received-SPF: fail
+Received: from mailinator-relay.disposable.net (198.51.100.55)
+    by mx.company.com with ESMTPS;
+    Mon, 07 Sep 2026 15:30:00 +0000
+
+Thank you for registering. Your account has been created.
+
+Note: This is an automated message. Replies to this address are not monitored.
+
+If you did not register for this account, you may ignore this email.

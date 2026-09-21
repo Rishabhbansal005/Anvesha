@@ -1,0 +1,105 @@
+{
+  "manifest_version": "1.1.0",
+  "audit_date": "2026-09-06T17:05:00Z",
+  "model_scope": "Model 2 (Business Email Compromise - BEC Baseline)",
+  "governance_status": "PROVENANCE_AUDIT_VERIFIED_DISAGGREGATED",
+  "model_binary_sha256": "afae6a334272907d7aa380216853d3543f5cd90fb6f8a5b7780eec7bcbb9aee8",
+  "sources": [
+    {
+      "source_name": "Kaggle_Synthetic_BEC_Curated",
+      "source_url": "https://www.kaggle.com/datasets/adversarial-bec-dataset",
+      "license": "CC BY 4.0 (Creative Commons Attribution 4.0 International)",
+      "nature": "SYNTHETIC",
+      "role": "Positive BEC Training & Validation"
+    },
+    {
+      "source_name": "Enron_Corporate_Corpus",
+      "source_url": "https://www.cs.cmu.edu/~enron/",
+      "license": "Public Domain (FERC court records)",
+      "nature": "REAL",
+      "role": "Negative Non-BEC Corporate Baseline"
+    },
+    {
+      "source_name": "Rohit_Dube_BEC2_Benchmark",
+      "source_url": "https://github.com/r-dube/bec",
+      "arxiv_doi": "10.48550/arXiv.2407.20235",
+      "license": "Open Research Access",
+      "nature": "AUGMENTED_SYNTHETIC_DERIVED",
+      "role": "Pure Out-of-Source Independent Evaluation Benchmark"
+    },
+    {
+      "source_name": "Kaggle_Adversarial_Evasion_Benchmark",
+      "source_url": "https://www.kaggle.com/datasets/adversarial-bec-dataset",
+      "license": "CC BY 4.0",
+      "nature": "ADVERSARIAL_SYNTHETIC",
+      "role": "Adversarial Evasion Robustness Benchmark (Homoglyphs & Unicode Injection)"
+    }
+  ],
+  "partitions": {
+    "TRAIN": {
+      "file": "ml/datasets/bec/train.jsonl",
+      "sha256": "902d0b6881390276e5cbadd4b0aff57fa6916460e1f76d44f544925395ac9177",
+      "total_samples": 2400,
+      "label_distribution": {
+        "NON_BEC": 1400,
+        "BEC": 1000
+      }
+    },
+    "VALIDATION": {
+      "file": "ml/datasets/bec/val.jsonl",
+      "sha256": "307eb576bfddf0092f7e024d7adde659ddf0d1d57471855b937a5d2647967224",
+      "total_samples": 500,
+      "label_distribution": {
+        "BEC": 200,
+        "NON_BEC": 300
+      }
+    },
+    "INDEPENDENT_TEST_DUBE_PURE": {
+      "file": "ml/datasets/bec/independent_test_dube_bec2_pure.jsonl",
+      "sha256": "f84aea4310b89bd9c9bc4e51b7f11d1362c02760cd41499951b2cc0af2099d51",
+      "total_samples": 279,
+      "label_distribution": {
+        "BEC": 189,
+        "NON_BEC": 90
+      },
+      "provenance_type": "Pure Standalone Dube BEC-2 Derived Benchmark"
+    },
+    "INDEPENDENT_TEST_ENRON_HELDOUT": {
+      "file": "ml/datasets/bec/independent_test_enron_heldout.jsonl",
+      "sha256": "a0e0a699de197c9edb5ee82d66e7e62c79ccca38f36a4ebb47b6ddadf276f811",
+      "total_samples": 300,
+      "label_distribution": {
+        "NON_BEC": 300
+      },
+      "provenance_type": "Pure Authentic Corporate Benign Control Benchmark"
+    },
+    "INDEPENDENT_TEST_MIXED_BENCHMARK": {
+      "file": "ml/datasets/bec/independent_test_bec2_mixed.jsonl",
+      "sha256": "aefaeb5d6fbf893d551c8d2113903c43fc67a405b60b9a84765b3849c4633e53",
+      "total_samples": 579,
+      "label_distribution": {
+        "NON_BEC": 390,
+        "BEC": 189
+      },
+      "provenance_type": "Mixed-Source Independent Benchmark (Dube BEC-2 + Held-Out Enron/SpamAssassin)"
+    },
+    "ADVERSARIAL_TEST": {
+      "file": "ml/datasets/bec/adversarial_test.jsonl",
+      "sha256": "27208ed7762b0ef0f109e4d6335a9fa9244a3c474e03582c5426894cb6e35839",
+      "total_samples": 300,
+      "label_distribution": {
+        "BEC": 300
+      },
+      "provenance_type": "Adversarial Evasion Benchmark (Homoglyphs & Unicode Injection)"
+    }
+  },
+  "leakage_controls": {
+    "train_vs_val_overlap": 0,
+    "train_vs_pure_dube_overlap": 0,
+    "train_vs_enron_heldout_overlap": 0,
+    "train_vs_mixed_benchmark_overlap": 0,
+    "train_vs_adversarial_overlap": 0,
+    "train_vs_iwspa_overlap": 0,
+    "train_vs_anvesh_challenge_overlap": 0
+  }
+}

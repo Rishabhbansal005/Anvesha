@@ -1,0 +1,25 @@
+From: Global IT Support Desk <helpdesk-notice@service-corp-update.com>
+Reply-To: security-dispatcher@collector-redirect.net
+To: all-staff@enterprise.local
+Subject: Critical System Alert: Mandatory Security Patch Deployment for All Workstations
+Date: Wed, 09 Sep 2026 09:20:00 +0000
+Message-ID: <patch-alert-7721@service-corp-update.com>
+Received: from relay02.external-mail-route.com (203.0.113.88 [203.0.113.88])
+    by mx.enterprise.local with ESMTP id 9918B
+    for <all-staff@enterprise.local>; Wed, 09 Sep 2026 09:20:02 +0000
+Authentication-Results: mx.enterprise.local;
+    spf=softfail (sender IP 203.0.113.88);
+    dkim=neutral;
+    dmarc=fail
+
+Dear Staff Member,
+
+An urgent zero-day security advisory has been issued across the corporate network. 
+All workstations are required to execute the mandatory compliance diagnostic tool immediately to retain intranet and email access.
+
+Click the diagnostic gateway below to verify your workstation configuration:
+hxxps://internal-patch-diagnostic.collector-redirect[.]net/verify?uid=staff991
+
+Failure to run this check within 2 hours will result in automatic directory account suspension.
+
+IT Systems Administration & Global Operations

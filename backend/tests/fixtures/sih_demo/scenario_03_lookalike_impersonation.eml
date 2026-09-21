@@ -1,0 +1,29 @@
+From: "Microsoft Security Team" <security@micros0ft-account.com>
+To: employee@targetcorp.com
+Subject: Your Microsoft Account Password Expires Tonight
+Date: Mon, 07 Sep 2026 11:00:00 +0000
+Message-ID: <SIH-DEMO-03-lookalike@micros0ft-account.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Authentication-Results: mx.targetcorp.com;
+    spf=fail (domain micros0ft-account.com does not designate 203.0.113.42 as permitted sender);
+    dkim=fail header.i=@micros0ft-account.com;
+    dmarc=fail (p=reject)
+Received-SPF: fail (domain micros0ft-account.com does not designate 203.0.113.42 as permitted sender)
+Received: from lookalike-infra.xyz (203.0.113.42)
+    by mx.targetcorp.com with ESMTPS;
+    Mon, 07 Sep 2026 11:00:00 +0000
+
+<html>
+<body>
+<h2>Microsoft Security Alert</h2>
+Dear User,<br><br>
+Your Microsoft account password expires tonight. This is a security notice.<br><br>
+<strong>Action required:</strong> You must reset your credentials immediately.<br><br>
+<a href="http://micros0ft-account.com/reset?token=def456abc">Click here to confirm your identity</a><br><br>
+Failure to verify your account within 24 hours will result in access suspension.<br><br>
+Please also update billing information to maintain uninterrupted service.<br><br>
+Microsoft Security Team<br>
+One Microsoft Way, Redmond, WA 98052
+</body>
+</html>
