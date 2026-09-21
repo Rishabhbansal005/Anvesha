@@ -238,13 +238,16 @@ async def analyze_email(
         if file_size > MAX_EMAIL_BYTES:
             raise HTTPException(status_code=413, detail=f"Email file exceeds maximum size limit of {MAX_EMAIL_BYTES // (1024*1024)}MB.")
         try:
-            raw_text = file_bytes.decode('utf-8', errors='replace')
+            raw_text = file_bytes.decode('utf-8-sig', errors='replace')
         except Exception:
             raw_text = str(file_bytes)
     elif raw_headers:
         raw_text = raw_headers
         file_name = "pasted_headers.txt"
         file_size = len(raw_headers.encode('utf-8'))
+
+    # Strip any leading UTF-8 Byte Order Mark (BOM) or zero-width spaces that break RFC-822 header parsing
+    raw_text = raw_text.lstrip('\ufeff\uffef\r\n ')
 
     if file_size > MAX_EMAIL_BYTES:
         raise HTTPException(status_code=413, detail="Email payload exceeds maximum allowed size.")
@@ -436,14 +439,15 @@ async def analyze_email(
     infra_score = 0
 
     if spf_status == "FAIL":
-        auth_score += 15
+        auth_score += 10
         reasons.append("SPF validation failure for sender identity")
     if dkim_status == "FAIL":
-        auth_score += 10
+        auth_score += 5
         reasons.append("DKIM cryptographic signature verification failure")
     if dmarc_status == "FAIL":
-        auth_score += 10
+        auth_score += 5
         reasons.append("DMARC policy check failed")
+    auth_score = min(20, auth_score)
 
     if reply_to and sender and reply_to.lower().strip() != sender.lower().strip():
         behavior_score += 10
@@ -487,6 +491,8 @@ async def analyze_email(
                 behavior_score += 20
                 reasons.append(f"Institutional brand name '{d_name}' routed through multi-tier bulk mailer ('{s_dom}')")
 
+    behavior_score = min(20, behavior_score)
+
     if origin_confidence in ("HIGH", "MEDIUM") and probable_origin_ip:
         infra_score += 10
 
@@ -500,6 +506,8 @@ async def analyze_email(
         for r in extra_reasons:
             if r not in reasons:
                 reasons.append(r)
+
+    infra_score = min(20, infra_score)
 
     # ML Semantic Vector & NLP Classification
     ml_res = ml_classifier.classify(text=raw_text, sender=sender, subject=subject)
@@ -825,6 +833,7 @@ async def analyze_email(
         "approximate_location": approximate_location,
         "spf_status": spf_status,
         "dkim_status": dkim_status,
+        "dmarc_status": dmarc_status,
         "category_scores": risk_result.get("category_scores"),
         "ml_signal": ml_res,
         "lookalike_evidence": lookalike_evidence,

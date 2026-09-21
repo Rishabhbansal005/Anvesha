@@ -42,12 +42,19 @@ class SupabaseClient:
             "Prefer": "return=representation"
         }
         
-        # Shared connection-pooled HTTP client with low timeout to prevent network stalls
+        # Shared connection-pooled HTTP client with resilient timeout for cloud Supabase
         self._client = httpx.Client(
-            timeout=1.5,
+            timeout=8.0,
             limits=httpx.Limits(max_keepalive_connections=20, max_connections=50)
         )
         
+    def _row_matches_filters(self, row: Dict[str, Any], filters: Dict[str, str]) -> bool:
+        for k, v in filters.items():
+            val = v[3:] if v.startswith("eq.") else v
+            if str(row.get(k, "")) != str(val):
+                return False
+        return True
+
     def is_configured(self) -> bool:
         return bool(self.base_url and (self.secret_key or self.publishable_key))
 
@@ -90,7 +97,8 @@ class SupabaseClient:
                     existing_ids = {row.get("id") or row.get("case_number") for row in rows}
                     for lr in local_rows:
                         if (lr.get("id") or lr.get("case_number")) not in existing_ids:
-                            rows.append(lr)
+                            if not filters or self._row_matches_filters(lr, filters):
+                                rows.append(lr)
                 return rows
             elif r.status_code in (404, 400):
                 # Table not migrated in Supabase PostgREST: remember for 10 minutes to avoid repeated slow HTTP roundtrips

@@ -59,10 +59,21 @@ class ForensicReportService:
     """
 
     def _resolve_case(self, case_id: str) -> Dict[str, Any]:
-        items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_id}"})
+        case_str = str(case_id).strip()
+        if case_str.isdigit():
+            items = supabase.query("cases", select="*", filters={"id": f"eq.{case_str}"})
+            if not items:
+                items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_str}"})
+        else:
+            items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_str}"})
+            if not items:
+                items = supabase.query("cases", select="*", filters={"id": f"eq.{case_str}"})
         if not items:
-            items = supabase.query("cases", select="*", filters={"id": f"eq.{case_id}"})
-        if not items:
+            # Fallback: check all recent cases in memory/cache
+            all_cases = supabase.query("cases", select="*")
+            for c in all_cases:
+                if str(c.get("id")) == case_str or str(c.get("case_number")) == case_str:
+                    return c
             raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found")
         return items[0]
 

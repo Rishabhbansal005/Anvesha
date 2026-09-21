@@ -173,11 +173,21 @@ def list_cases(
 
 
 def _resolve_case(case_id: str) -> Dict[str, Any]:
-    items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_id}"})
+    case_str = str(case_id).strip()
+    if case_str.isdigit():
+        items = supabase.query("cases", select="*", filters={"id": f"eq.{case_str}"})
+        if not items:
+            items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_str}"})
+    else:
+        items = supabase.query("cases", select="*", filters={"case_number": f"eq.{case_str}"})
+        if not items:
+            items = supabase.query("cases", select="*", filters={"id": f"eq.{case_str}"})
     if not items:
-        items = supabase.query("cases", select="*", filters={"id": f"eq.{case_id}"})
-    if not items:
-        raise HTTPException(status_code=404, detail="Investigation case not found")
+        all_cases = supabase.query("cases", select="*")
+        for c in all_cases:
+            if str(c.get("id")) == case_str or str(c.get("case_number")) == case_str:
+                return c
+        raise HTTPException(status_code=404, detail=f"Investigation case '{case_id}' not found")
     return items[0]
 
 
@@ -340,8 +350,14 @@ def get_case_details(case_id: str):
     c_id = case.get("id") or case_id
 
     emails = supabase.query("emails", select="*", filters={"case_id": f"eq.{c_id}"})
+    if not emails and case.get("case_number"):
+        emails = supabase.query("emails", select="*", filters={"case_id": f"eq.{case.get('case_number')}"})
     evidence = supabase.query("evidence", select="*", filters={"case_id": f"eq.{c_id}"})
+    if not evidence and case.get("case_number"):
+        evidence = supabase.query("evidence", select="*", filters={"case_id": f"eq.{case.get('case_number')}"})
     iocs = supabase.query("iocs", select="*", filters={"case_id": f"eq.{c_id}"})
+    if not iocs and case.get("case_number"):
+        iocs = supabase.query("iocs", select="*", filters={"case_id": f"eq.{case.get('case_number')}"})
     
     email_record = emails[0] if emails else None
     hops = (email_record.get("observed_relays_json") or email_record.get("delivery_hops_json") or []) if email_record else (case.get("observed_relays_json") or case.get("delivery_hops_json") or [])
@@ -364,12 +380,32 @@ def get_case_details(case_id: str):
         if email_record.get("spf_status") == "FAIL":
             auth_score += 10
         if email_record.get("dkim_status") == "FAIL":
-            auth_score += 10
+            auth_score += 5
         if email_record.get("dmarc_status") == "FAIL":
-            auth_score += 10
+            auth_score += 5
+        auth_score = min(20, auth_score)
 
-        behavior_score = 15 if case.get("threat_type") == "BEC" else 0
+        behavior_score = 0
+        if email_record.get("reply_to") and sender and email_record.get("reply_to").lower().strip() != sender.lower().strip():
+            behavior_score += 10
+        bec_keywords = ["wire transfer", "urgent payment", "bank account", "gift card", "payroll", "swift", "confidential m&a", "invoice overdue"]
+        for kw in bec_keywords:
+            if kw in raw_text.lower():
+                behavior_score += 10
+                break
+        if behavior_score == 0 and case.get("threat_type") == "BEC":
+            behavior_score = 15
+        behavior_score = min(20, behavior_score)
+
         infra_score = 10 if case.get("probable_origin_ip") else 0
+        if enrichment and enrichment.get("infrastructure"):
+            infra_data = enrichment.get("infrastructure")
+            extra_infra, _ = risk_engine.evaluate_infrastructure_risk(
+                vpn_tor_proxy_indicator=infra_data.get("vpn_tor_proxy_indicator", "NONE"),
+                abuse_score=infra_data.get("reputation_score") or infra_data.get("reputation")
+            )
+            infra_score += extra_infra
+        infra_score = min(20, infra_score)
 
         # Model 3B Lookalike Evidence
         sender_domain = sender.split("@")[-1].strip(" >").lower() if "@" in sender else ""
@@ -407,6 +443,17 @@ def get_case_details(case_id: str):
     else:
         lookalike_evidence = None
         identity_evidence = None
+        # Provide fallback category scores derived from case metadata if email row unlinked
+        r_score = case.get("risk_score", 0)
+        calc = risk_engine.calculate_risk(
+            ml_score=min(20, int(r_score * 0.25)),
+            auth_risk=20 if case.get("threat_type") in ("SPOOFING_IMPERSONATION", "PHISHING") else 0,
+            infra_risk=20 if case.get("probable_origin_ip") else 0,
+            behavior_bec_risk=20 if case.get("threat_type") == "BEC" else 0,
+            lookalike_risk=10 if case.get("threat_type") in ("SPOOFING_IMPERSONATION", "BEC") else 0,
+            identity_risk=10 if case.get("threat_type") in ("SPOOFING_IMPERSONATION", "BEC") else 0
+        )
+        category_scores = calc.get("category_scores")
 
     # Correlated Campaign Intelligence
     campaign = None

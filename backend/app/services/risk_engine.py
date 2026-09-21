@@ -203,8 +203,8 @@ class MLThreatClassifier:
         # Normalize ML probability to 0.0 - 1.0
         ml_probability = min(1.0, raw_score)
         
-        # Scale to ML weight category (0 - 30)
-        ml_score = int(round(ml_probability * 30))
+        # Scale to ML weight category (0 - 20)
+        ml_score = int(round(ml_probability * 20))
 
         return {
             "ml_score": ml_score,
@@ -218,49 +218,48 @@ class RiskEngine:
     """
     Consolidated, transparent risk evaluation engine.
     Ensures that every risk point is explainable and attributed to a category.
+    Total maximum points across all 6 models sum to exactly 100:
+    - ML Phishing NLP: 20
+    - Cryptographic Auth: 20
+    - Transport Infrastructure: 20
+    - Behavioral / BEC: 20
+    - Lookalike Domain: 10
+    - Identity Impersonation: 10
     """
     @staticmethod
     def calculate_risk(
-        ml_score: int = 0,             # 0 - 30
-        auth_risk: int = 0,            # 0 - 25
-        infra_risk: int = 0,           # 0 - 25
+        ml_score: int = 0,             # 0 - 20
+        auth_risk: int = 0,            # 0 - 20
+        infra_risk: int = 0,           # 0 - 20
         behavior_bec_risk: int = 0,    # 0 - 20
-        lookalike_risk: int = 0,       # 0 - 15 (Model 3B Lookalike Evidence)
-        identity_risk: int = 0,        # 0 - 15 (Model 3A Identity Impersonation Evidence)
+        lookalike_risk: int = 0,       # 0 - 10 (Model 3B Lookalike Evidence)
+        identity_risk: int = 0,        # 0 - 10 (Model 3A Identity Impersonation Evidence)
         reasons: List[str] = None,
-        disposable_risk: int = 0       # 0 - 8 (Phase 12.5 Disposable Provider Evidence)
+        disposable_risk: int = 0       # 0 - 5 (Phase 12.5 Disposable Provider Evidence)
     ) -> Dict[str, Any]:
-        ml_score = max(0, min(30, ml_score))
-        auth_risk = max(0, min(25, auth_risk))
-        infra_risk = max(0, min(25, infra_risk))
+        ml_score = max(0, min(20, ml_score))
+        auth_risk = max(0, min(20, auth_risk))
+        infra_risk = max(0, min(20, infra_risk))
         behavior_bec_risk = max(0, min(20, behavior_bec_risk))
-        lookalike_risk = max(0, min(15, lookalike_risk))
-        identity_risk = max(0, min(15, identity_risk))
-        disposable_risk = max(0, min(8, disposable_risk))
+        lookalike_risk = max(0, min(10, lookalike_risk))
+        identity_risk = max(0, min(10, identity_risk))
+        disposable_risk = max(0, min(5, disposable_risk))
         
-        # Base additive sum across all modular dimensions
-        additive_score = ml_score + auth_risk + infra_risk + behavior_bec_risk + lookalike_risk + identity_risk + disposable_risk
-        
-        # Threat Dominance Scaling: When ML detects confirmed phishing/coercion with high confidence (>=20/30),
-        # the overall threat score must reflect this severe threat (70 - 85 HIGH, up to 100 CRITICAL with auth/infra failure).
-        if ml_score >= 20:
-            elevated_ml = int(round((ml_score / 30.0) * 75)) # Scales 20-30 -> 50-75 base
-            total_score = min(100, max(additive_score, elevated_ml + auth_risk + infra_risk + behavior_bec_risk))
-        else:
-            total_score = min(100, additive_score)
+        # Transparent, explainable score directly equal to the exact sum of all model category scores (Max = 100)
+        total_score = min(100, max(0, ml_score + auth_risk + infra_risk + behavior_bec_risk + lookalike_risk + identity_risk + disposable_risk))
             
         level = get_risk_level_from_score(total_score)
         
         cat_scores = {
-            "ml_risk": {"score": ml_score, "max": 30},
-            "forensic_auth_risk": {"score": auth_risk, "max": 25},
-            "infrastructure_risk": {"score": infra_risk, "max": 25},
+            "ml_risk": {"score": ml_score, "max": 20},
+            "forensic_auth_risk": {"score": auth_risk, "max": 20},
+            "infrastructure_risk": {"score": infra_risk, "max": 20},
             "behavior_bec_risk": {"score": behavior_bec_risk, "max": 20},
-            "lookalike_impersonation_risk": {"score": lookalike_risk, "max": 15},
-            "identity_impersonation_risk": {"score": identity_risk, "max": 15}
+            "lookalike_impersonation_risk": {"score": lookalike_risk, "max": 10},
+            "identity_impersonation_risk": {"score": identity_risk, "max": 10}
         }
         if disposable_risk > 0:
-            cat_scores["disposable_email_risk"] = {"score": disposable_risk, "max": 8}
+            cat_scores["disposable_email_risk"] = {"score": disposable_risk, "max": 5}
 
         return {
             "risk_score": total_score,
@@ -322,21 +321,28 @@ class RiskEngine:
             score += 5
             reasons.append(f"Infrastructure indicates {vpn_tor_proxy_indicator.lower()} traversal")
 
-        if threat_verdict == "MALICIOUS":
-            score += 15
-            reasons.append("Threat intelligence flagged relay IP as known malicious infrastructure")
-        elif threat_verdict == "SUSPICIOUS" or (abuse_score and abuse_score >= 30):
-            score += 8
-            reasons.append(f"Threat intelligence reports elevated abuse confidence score ({abuse_score}%)")
+        abuse_val = 0
+        if abuse_score is not None:
+            try:
+                abuse_val = float(abuse_score)
+            except (ValueError, TypeError):
+                abuse_val = 0
 
-        return min(25, score), reasons
+        if threat_verdict == "MALICIOUS" or abuse_val >= 75:
+            score += 12
+            reasons.append(f"Threat intelligence flagged relay IP as known malicious infrastructure ({int(abuse_val)}% abuse confidence)")
+        elif threat_verdict == "SUSPICIOUS" or abuse_val >= 30:
+            score += 8
+            reasons.append(f"Threat intelligence reports elevated abuse confidence score ({int(abuse_val)}%)")
+
+        return min(20, score), reasons
 
 
 
     @staticmethod
     def evaluate_lookalike_risk(lookalike_result: Dict[str, Any]) -> Tuple[int, List[str]]:
         """
-        Calculates lookalike / brand impersonation risk contribution (0 - 15) based strictly on Model 3B evidence.
+        Calculates lookalike / brand impersonation risk contribution (0 - 10) based strictly on Model 3B evidence.
         Guarantees:
         - Domain evidence indicates infrastructure similarity only.
         - NEVER asserts or establishes actor identity.
@@ -349,7 +355,7 @@ class RiskEngine:
         candidate = lookalike_result.get("candidate_domain", "unspecified")
 
         if signal == "HIGH":
-            score = 15
+            score = 10
             ind_desc = ", ".join(indicators) if indicators else "Structural typosquat resemblance"
             reasons.append(
                 f"LOOKALIKE DOMAIN SIGNAL: HIGH - Observed indicator: {ind_desc}. "
@@ -357,18 +363,18 @@ class RiskEngine:
                 f"Infrastructure/domain evidence only."
             )
         elif signal == "MEDIUM":
-            score = 8
+            score = 5
             reasons.append(
                 f"LOOKALIKE DOMAIN SIGNAL: MEDIUM - Candidate '{candidate}' exhibits lexical proximity to trusted '{trusted}'. "
                 f"Infrastructure/domain evidence only."
             )
 
-        return min(15, score), reasons
+        return min(10, score), reasons
 
     @staticmethod
     def evaluate_identity_risk(identity_result: Dict[str, Any]) -> Tuple[int, List[str]]:
         """
-        Calculates identity impersonation risk contribution (0 - 15) based strictly on Model 3A evidence.
+        Calculates identity impersonation risk contribution (0 - 10) based strictly on Model 3A evidence.
         Guarantees:
         - Evidence/correlation signal only.
         - NEVER asserts or establishes actor identity (Actor Identity: NOT ESTABLISHED).
@@ -381,9 +387,9 @@ class RiskEngine:
         obs_sender = identity_result.get("observed_sender", "Unknown")
         trusted = identity_result.get("trusted_identity")
 
-        # Scale 0-100 score to 0-15 risk contribution
+        # Scale 0-100 score to 0-10 risk contribution
         if impersonation_score > 0:
-            score = min(15, int(round((impersonation_score / 100.0) * 15)))
+            score = min(10, int(round((impersonation_score / 100.0) * 10)))
 
         signals = identity_result.get("signals", [])
         if signals:
@@ -396,7 +402,7 @@ class RiskEngine:
                 f"Actor Identity: NOT ESTABLISHED."
             )
 
-        return min(15, score), reasons
+        return min(10, score), reasons
 
 
 risk_engine = RiskEngine()

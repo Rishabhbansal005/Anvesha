@@ -14,8 +14,11 @@ from app.services.intelligence.threat_intel import vt_provider, abuseipdb_provid
 from app.services.attribution_service import attribution_service
 
 
+import logging
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+logger = logging.getLogger("ANVESH.IntelligenceService")
 
 
 class IntelligenceService:

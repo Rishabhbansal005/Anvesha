@@ -44,8 +44,8 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
 
   if (!isOpen) return null;
 
-  const caseId = caseData?.id || caseData?.case_number || reportData?.case_identification?.case_id || 'UNKNOWN';
-  const caseNumber = reportData?.case_identification?.case_number || caseData?.case_number || caseId;
+  const caseId = caseData?.case_number || caseData?.id || reportData?.case_identification?.case_number || reportData?.case_identification?.case_id || 'UNKNOWN';
+  const caseNumber = caseData?.case_number || reportData?.case_identification?.case_number || caseId;
 
   const copyToClipboard = (text: string, key: string) => {
     if (!text) return;
@@ -595,23 +595,23 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-[11px]">
                   <div className="p-2 rounded bg-[#080C12] border border-[#25313E]">
                     <span className="text-[10px] text-[#8996A6] block">Auth Matrix</span>
-                    <span className="font-bold text-[#FF453A]">+{fusion.category_scores?.forensic_auth_risk?.score ?? 0}/25</span>
+                    <span className="font-bold text-[#FF453A]">+{fusion.category_scores?.forensic_auth_risk?.score ?? 0}/{fusion.category_scores?.forensic_auth_risk?.max ?? 20}</span>
                   </div>
                   <div className="p-2 rounded bg-[#080C12] border border-[#25313E]">
                     <span className="text-[10px] text-[#8996A6] block">M1 Phishing</span>
-                    <span className="font-bold text-[#5B8DEF]">+{fusion.category_scores?.ml_risk?.score ?? 0}/20</span>
+                    <span className="font-bold text-[#5B8DEF]">+{fusion.category_scores?.ml_risk?.score ?? 0}/{fusion.category_scores?.ml_risk?.max ?? 20}</span>
                   </div>
                   <div className="p-2 rounded bg-[#080C12] border border-[#25313E]">
                     <span className="text-[10px] text-[#8996A6] block">M2 BEC Fraud</span>
-                    <span className="font-bold text-[#FF9F0A]">+{fusion.category_scores?.behavior_bec_risk?.score ?? 0}/20</span>
+                    <span className="font-bold text-[#FF9F0A]">+{fusion.category_scores?.behavior_bec_risk?.score ?? 0}/{fusion.category_scores?.behavior_bec_risk?.max ?? 20}</span>
                   </div>
                   <div className="p-2 rounded bg-[#080C12] border border-[#25313E]">
                     <span className="text-[10px] text-[#8996A6] block">M3 Identity</span>
-                    <span className="font-bold text-[#30D158]">+{fusion.category_scores?.identity_impersonation_risk?.score ?? 0}/20</span>
+                    <span className="font-bold text-[#30D158]">+{fusion.category_scores?.identity_impersonation_risk?.score ?? 0}/{fusion.category_scores?.identity_impersonation_risk?.max ?? 10}</span>
                   </div>
                   <div className="p-2 rounded bg-[#080C12] border border-[#25313E]">
                     <span className="text-[10px] text-[#8996A6] block">Infrastructure</span>
-                    <span className="font-bold text-[#5B8DEF]">+{fusion.category_scores?.infrastructure_risk?.score ?? 0}/15</span>
+                    <span className="font-bold text-[#5B8DEF]">+{fusion.category_scores?.infrastructure_risk?.score ?? 0}/{fusion.category_scores?.infrastructure_risk?.max ?? 20}</span>
                   </div>
                 </div>
               </div>

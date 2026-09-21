@@ -333,11 +333,13 @@ export const InvestigationWorkspace: React.FC<InvestigationWorkspaceProps> = ({
     setLoadingReport(true);
     setReportModalOpen(true);
     try {
-      const caseId = caseData.id || caseData.case_number;
+      const caseId = caseData.case_number || caseData.id;
       const res = await fetch(`${API_BASE_URL}/cases/${caseId}/report`);
       if (res.ok) {
         const data = await res.json();
         setReportData(data);
+      } else {
+        console.error('Report API returned non-OK status:', res.status);
       }
     } catch (err) {
       console.error('Failed to load report:', err);
@@ -1129,7 +1131,7 @@ Authentication-Results: ...
                     {/* Card 1: Text / Language Signal (Model 1) */}
                     {(() => {
                       const score = caseData.category_scores?.ml_risk?.score ?? (caseData.ml_signal?.ml_score ?? 0);
-                      const max = 30;
+                      const max = caseData.category_scores?.ml_risk?.max ?? 20;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#5B8DEF]/40 transition-all flex flex-col justify-between space-y-2">
@@ -1172,7 +1174,7 @@ Authentication-Results: ...
                     {/* Card 2: Forensic Authentication (Model 2) */}
                     {(() => {
                       const score = caseData.category_scores?.forensic_auth_risk?.score ?? 0;
-                      const max = 25;
+                      const max = caseData.category_scores?.forensic_auth_risk?.max ?? 20;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#FF9F0A]/40 transition-all flex flex-col justify-between space-y-2">
@@ -1215,7 +1217,7 @@ Authentication-Results: ...
                     {/* Card 3: Infrastructure Intel (Model 4) */}
                     {(() => {
                       const score = caseData.category_scores?.infrastructure_risk?.score ?? 0;
-                      const max = 25;
+                      const max = caseData.category_scores?.infrastructure_risk?.max ?? 20;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#30D158]/40 transition-all flex flex-col justify-between space-y-2">
@@ -1258,7 +1260,7 @@ Authentication-Results: ...
                     {/* Card 4: BEC / Behavioral Rules (Model 6) */}
                     {(() => {
                       const score = caseData.category_scores?.behavior_bec_risk?.score ?? 0;
-                      const max = 20;
+                      const max = caseData.category_scores?.behavior_bec_risk?.max ?? 20;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#FF453A]/40 transition-all flex flex-col justify-between space-y-2">
@@ -1301,7 +1303,7 @@ Authentication-Results: ...
                     {/* Card 5: Lookalike Domain (Model 3B) */}
                     {(() => {
                       const score = caseData.category_scores?.lookalike_impersonation_risk?.score ?? 0;
-                      const max = 15;
+                      const max = caseData.category_scores?.lookalike_impersonation_risk?.max ?? 10;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#BF5AF2]/40 transition-all flex flex-col justify-between space-y-2">
@@ -1344,7 +1346,7 @@ Authentication-Results: ...
                     {/* Card 6: Identity Impersonation (Model 3A) */}
                     {(() => {
                       const score = caseData.category_scores?.identity_impersonation_risk?.score ?? 0;
-                      const max = 15;
+                      const max = caseData.category_scores?.identity_impersonation_risk?.max ?? 10;
                       const pct = Math.min(100, Math.round((score / max) * 100));
                       return (
                         <div className="p-3 rounded-lg bg-[#080C12] border border-[#25313E] hover:border-[#FF9F0A]/40 transition-all flex flex-col justify-between space-y-2">
