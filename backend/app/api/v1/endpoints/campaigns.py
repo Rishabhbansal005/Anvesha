@@ -76,6 +76,8 @@ def get_campaign_details(campaign_id: str):
 
     # Fetch related cases
     cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{c_uuid}"})
+    if not cases and camp.get("campaign_id"):
+        cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{camp.get('campaign_id')}"})
 
     # Fetch timeline
     timeline = campaign_service.get_campaign_timeline(c_uuid)

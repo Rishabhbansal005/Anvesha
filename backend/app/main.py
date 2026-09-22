@@ -23,8 +23,13 @@ async def lifespan(app: FastAPI):
         logger.info("[STARTUP] Creating PostgreSQL/SQLite database tables...")
         Base.metadata.create_all(bind=engine)
         logger.info("[STARTUP] Database tables verified successfully.")
+        
+        from app.services.campaign_service import campaign_service
+        correlated = campaign_service.auto_correlate_unassigned_cases()
+        if correlated > 0:
+            logger.info(f"[STARTUP] Auto-correlated {correlated} unassigned case(s) into campaign clusters.")
     except Exception as e:
-        logger.error(f"[STARTUP] Error creating database tables: {e}")
+        logger.error(f"[STARTUP] Error during startup initialization: {e}")
     yield
     logger.info("[SHUTDOWN] Application shutting down.")
 

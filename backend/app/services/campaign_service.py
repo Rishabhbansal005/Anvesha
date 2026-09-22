@@ -568,6 +568,18 @@ class CampaignCorrelationService:
         if not case_id:
             return None
 
+        # If this case is already assigned to a campaign, return existing campaign
+        if case_data.get("campaign_id"):
+            existing_camps = supabase.query("campaigns", select="*", filters={"id": f"eq.{case_data['campaign_id']}"})
+            if not existing_camps:
+                existing_camps = supabase.query("campaigns", select="*", filters={"campaign_id": f"eq.{case_data['campaign_id']}"})
+            if existing_camps:
+                return {
+                    "campaign": existing_camps[0],
+                    "correlation": {"score": existing_camps[0].get("confidence_score", 85), "confidence": existing_camps[0].get("confidence", "HIGH"), "reasons": []},
+                    "matched_case_number": case_data.get("case_number")
+                }
+
         # Fetch existing cases
         all_cases = supabase.query("cases", select="*")
         existing_cases = [c for c in all_cases if (c.get("id") != case_id and c.get("case_number") != case_id)]
@@ -642,17 +654,19 @@ class CampaignCorrelationService:
         matched_campaign_id = best_match_case.get("campaign_id")
         if matched_campaign_id:
             existing_camps = supabase.query("campaigns", select="*", filters={"id": f"eq.{matched_campaign_id}"})
+            if not existing_camps:
+                existing_camps = supabase.query("campaigns", select="*", filters={"campaign_id": f"eq.{matched_campaign_id}"})
             if existing_camps:
                 campaign_record = existing_camps[0]
 
         # Case 2: No existing campaign, create a new Campaign
         if not campaign_record:
             cmp_num = f"ANV-26-CMP-{uuid.uuid4().hex[:6].upper()}"
-            title_lead = (email_data.get("subject") or case_data.get("title") or "Activity Cluster")[:40]
+            title_lead = (email_data.get("subject") if email_data else None) or case_data.get("title") or "Activity Cluster"
+            title_lead = str(title_lead)[:40]
             campaign_record = {
-                "id": str(uuid.uuid4()),
                 "campaign_id": cmp_num,
-                "name": f"Potential Campaign: {title_lead}",
+                "name": f"Campaign {cmp_num}: {title_lead}",
                 "status": "ACTIVE",
                 "confidence": best_correlation["confidence"],
                 "confidence_score": best_correlation["score"],
@@ -660,6 +674,8 @@ class CampaignCorrelationService:
                 "case_count": 2,
                 "email_count": 2,
                 "ioc_count": len(observables or []),
+                "first_seen": best_match_case.get("created_at") or now_iso,
+                "last_seen": now_iso,
                 "first_observed_at": best_match_case.get("created_at") or now_iso,
                 "last_observed_at": now_iso,
                 "created_at": now_iso,
@@ -682,12 +698,18 @@ class CampaignCorrelationService:
                 last_seen=campaign_record["last_observed_at"]
             )
             created_camp = supabase.insert("campaigns", campaign_record)
-            if created_camp:
+            if created_camp and isinstance(created_camp, dict) and "id" in created_camp:
                 campaign_record = created_camp
+            elif not campaign_record.get("id"):
+                camps = supabase.query("campaigns", select="*", filters={"campaign_id": f"eq.{cmp_num}"})
+                if camps:
+                    campaign_record = camps[0]
 
             # Attach previous case to this new campaign
+            other_col = "id" if best_match_case.get("id") else "case_number"
             other_id = best_match_case.get("id") or best_match_case.get("case_number")
-            supabase.update("cases", "id", other_id, {"campaign_id": campaign_record["id"]})
+            supabase.update("cases", other_col, str(other_id), {"campaign_id": campaign_record["id"]})
+            best_match_case["campaign_id"] = campaign_record["id"]
         else:
             # Update existing campaign
             new_count = (campaign_record.get("case_count") or 1) + 1
@@ -708,6 +730,7 @@ class CampaignCorrelationService:
                 "case_count": new_count,
                 "email_count": new_email_count,
                 "ioc_count": new_ioc_count,
+                "last_seen": now_iso,
                 "last_observed_at": now_iso,
                 "updated_at": now_iso,
                 "confidence": conf,
@@ -723,17 +746,20 @@ class CampaignCorrelationService:
                     last_seen=now_iso
                 )
             }
-            supabase.update("campaigns", "id", campaign_record["id"], updates)
+            supabase.update("campaigns", "id", str(campaign_record["id"]), updates)
             campaign_record.update(updates)
 
         # Attach current case to campaign
-        supabase.update("cases", "id", case_id, {"campaign_id": campaign_record["id"]})
+        cur_col = "id" if case_data.get("id") else "case_number"
+        cur_id = case_data.get("id") or case_data.get("case_number")
+        supabase.update("cases", cur_col, str(cur_id), {"campaign_id": campaign_record["id"]})
+        case_data["campaign_id"] = campaign_record["id"]
 
         # Record timeline event
         timeline_event = {
             "id": str(uuid.uuid4()),
-            "campaign_id": campaign_record["id"],
-            "case_id": case_id,
+            "campaign_id": str(campaign_record.get("id") or campaign_record.get("campaign_id")),
+            "case_id": str(case_id),
             "event_type": "CASE_CORRELATED",
             "timestamp": now_iso,
             "title": f"Case {case_data.get('case_number')} Attached to Campaign",
@@ -769,6 +795,8 @@ class CampaignCorrelationService:
 
         # Query all related cases
         cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{c_uuid}"})
+        if not cases and camp.get("campaign_id"):
+            cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{camp.get('campaign_id')}"})
         
         nodes: List[Dict[str, Any]] = []
         edges: List[Dict[str, Any]] = []
@@ -913,11 +941,15 @@ class CampaignCorrelationService:
         camp = camps[0]
         c_uuid = camp.get("id")
         cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{c_uuid}"})
+        if not cases and camp.get("campaign_id"):
+            cases = supabase.query("cases", select="*", filters={"campaign_id": f"eq.{camp.get('campaign_id')}"})
 
         events: List[Dict[str, Any]] = []
 
         # 1. Timeline events recorded during ingestion
         cached_events = supabase.query("campaign_timeline", select="*", filters={"campaign_id": f"eq.{c_uuid}"})
+        if not cached_events and camp.get("campaign_id"):
+            cached_events = supabase.query("campaign_timeline", select="*", filters={"campaign_id": f"eq.{camp.get('campaign_id')}"})
         events.extend(cached_events)
 
         # 2. Real events from cases and emails
@@ -974,6 +1006,36 @@ class CampaignCorrelationService:
             key=lambda x: str(x.get("timestamp", ""))
         )
         return sorted_events
+
+    def auto_correlate_unassigned_cases(self) -> int:
+        """
+        Scans cases without a campaign_id and groups matching cases into campaigns automatically.
+        """
+        try:
+            cases = supabase.query("cases")
+            unassigned = [c for c in cases if not c.get("campaign_id")]
+            if not unassigned:
+                return 0
+            count = 0
+            for case in unassigned:
+                case_id = case.get("id") or case.get("case_number")
+                emails = supabase.query("emails", filters={"case_id": f"eq.{case_id}"})
+                email_data = emails[0] if emails else {}
+                iocs = supabase.query("iocs", filters={"case_id": f"eq.{case_id}"})
+                infras = supabase.query("infrastructure_intelligence", filters={"case_id": f"eq.{case_id}"})
+                infra_data = infras[0] if infras else {}
+                res = self.correlate_and_assign_case(
+                    case_data=case,
+                    email_data=email_data,
+                    observables=iocs,
+                    infra_data=infra_data,
+                    lookalike_evidence={}
+                )
+                if res:
+                    count += 1
+            return count
+        except Exception as e:
+            return 0
 
 
 campaign_service = CampaignCorrelationService()

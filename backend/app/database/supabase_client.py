@@ -91,18 +91,19 @@ class SupabaseClient:
         try:
             r = self._client.get(f"{self.rest_url}/{table}", headers=self.headers, params=params)
             if r.status_code == 200:
+                self._missing_tables.pop(table, None)
                 rows = r.json()
                 local_rows = self._local_cache.get(table, [])
                 if local_rows:
-                    existing_ids = {row.get("id") or row.get("case_number") for row in rows}
+                    existing_ids = {str(row.get("id") or row.get("case_number") or row.get("campaign_id")) for row in rows}
                     for lr in local_rows:
-                        if (lr.get("id") or lr.get("case_number")) not in existing_ids:
+                        if str(lr.get("id") or lr.get("case_number") or lr.get("campaign_id")) not in existing_ids:
                             if not filters or self._row_matches_filters(lr, filters):
                                 rows.append(lr)
                 return rows
-            elif r.status_code in (404, 400):
-                # Table not migrated in Supabase PostgREST: remember for 10 minutes to avoid repeated slow HTTP roundtrips
-                self._missing_tables[table] = now + 600.0
+            elif r.status_code == 404:
+                # Table not migrated in Supabase PostgREST: remember for 60 seconds
+                self._missing_tables[table] = now + 60.0
                 return self._query_local_cache(table, filters=filters, limit=limit)
             else:
                 return self._query_local_cache(table, filters=filters, limit=limit)
@@ -135,8 +136,9 @@ class SupabaseClient:
     def insert(self, table: str, row: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         """Inserts a single row into Supabase and returns the created record."""
         # Always track in local cache so analyzed data is immediately visible in UI
-        if table in self._local_cache:
-            self._local_cache[table].insert(0, row)
+        if table not in self._local_cache:
+            self._local_cache[table] = []
+        self._local_cache[table].insert(0, row)
 
         now = time.time()
         if table in self._missing_tables and now < self._missing_tables[table]:
@@ -148,12 +150,18 @@ class SupabaseClient:
         try:
             r = self._client.post(f"{self.rest_url}/{table}", headers=self.headers, json=row)
             if r.status_code in (200, 201):
+                self._missing_tables.pop(table, None)
                 res = r.json()
-                return res[0] if isinstance(res, list) and len(res) > 0 else res
-            elif r.status_code in (404, 400):
-                self._missing_tables[table] = now + 600.0
+                created_record = res[0] if isinstance(res, list) and len(res) > 0 else res
+                if isinstance(created_record, dict):
+                    row.update(created_record)
+                return created_record or row
+            elif r.status_code == 404:
+                self._missing_tables[table] = now + 60.0
                 return row
-            return row
+            else:
+                logger.warning(f"Supabase insert returned {r.status_code} on {table}: {r.text}")
+                return row
         except Exception as e:
             logger.warning(f"Supabase insert error on {table}: {e}")
             return row
@@ -164,9 +172,10 @@ class SupabaseClient:
             return []
 
         # Always track in local cache
-        if table in self._local_cache:
-            for row in reversed(rows):
-                self._local_cache[table].insert(0, row)
+        if table not in self._local_cache:
+            self._local_cache[table] = []
+        for row in reversed(rows):
+            self._local_cache[table].insert(0, row)
 
         now = time.time()
         if table in self._missing_tables and now < self._missing_tables[table]:
@@ -178,12 +187,15 @@ class SupabaseClient:
         try:
             r = self._client.post(f"{self.rest_url}/{table}", headers=self.headers, json=rows)
             if r.status_code in (200, 201):
+                self._missing_tables.pop(table, None)
                 res = r.json()
                 return res if isinstance(res, list) else rows
-            elif r.status_code in (404, 400):
-                self._missing_tables[table] = now + 600.0
+            elif r.status_code == 404:
+                self._missing_tables[table] = now + 60.0
                 return rows
-            return rows
+            else:
+                logger.warning(f"Supabase insert_batch returned {r.status_code} on {table}: {r.text}")
+                return rows
         except Exception as e:
             logger.warning(f"Supabase insert_batch error on {table}: {e}")
             return rows
@@ -193,7 +205,7 @@ class SupabaseClient:
         updated_row = None
         if table in self._local_cache:
             for row in self._local_cache[table]:
-                if str(row.get(match_col)) == str(match_val):
+                if str(row.get(match_col)) == str(match_val) or (match_col == "id" and str(row.get("case_number")) == str(match_val)):
                     row.update(updates)
                     updated_row = row
 
@@ -207,12 +219,15 @@ class SupabaseClient:
             params = {f"{match_col}": f"eq.{match_val}"}
             r = self._client.patch(f"{self.rest_url}/{table}", headers=self.headers, params=params, json=updates)
             if r.status_code == 200:
+                self._missing_tables.pop(table, None)
                 res = r.json()
                 return res[0] if isinstance(res, list) and len(res) > 0 else res
-            elif r.status_code in (404, 400):
-                self._missing_tables[table] = now + 600.0
+            elif r.status_code == 404:
+                self._missing_tables[table] = now + 60.0
                 return updated_row
-            return updated_row
+            else:
+                logger.warning(f"Supabase update returned {r.status_code} on {table}: {r.text}")
+                return updated_row
         except Exception as e:
             logger.warning(f"Supabase update error on {table}: {e}")
             return updated_row
